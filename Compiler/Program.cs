@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
-using Compiler.Base;
+using Compiler.Scanning;
 
 namespace Compiler
 {
@@ -13,7 +13,6 @@ namespace Compiler
         static void Main(string[] args)
         {
             string input = "1 + 1";
-                      
             var definitions = new List<TokenDefinition>() {
                 new TokenDefinition("Integer", "[0-9]+"),
                 new TokenDefinition("Space", " ", true),
