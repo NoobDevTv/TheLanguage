@@ -13,10 +13,16 @@ namespace Compiler
         static void Main(string[] args)
         {
             string input = "1 + 1";
+                      
+            var definitions = new List<TokenDefinition>() {
+                new TokenDefinition("Integer", "[0-9]+"),
+                new TokenDefinition("Space", " ", true),
+                new TokenDefinition("Plus", "[+]")
+            };
 
-            TokenDefinition integerDefinition = new TokenDefinition("Integer", "[0-9]+");
-            TokenDefinition spaceDefinition = new TokenDefinition("Space", " ");
-            TokenDefinition plusDefiniton = new TokenDefinition("Plus", "+");
+            var tokenizer = new Tokenizer(definitions);
+
+            var result = tokenizer.Parse(input);
         }
     }
 }

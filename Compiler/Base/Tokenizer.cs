@@ -27,19 +27,24 @@ namespace Compiler.Base
                 {
                     var result = definition.Expression.Match(input, i);
 
-                    if (!result.Success)
+                    if (!result.Success || i != result.Index)
                         continue;
+
+
 
                     isSuccess = true;
 
                     i += result.Length;
-                    list.Add(new Token(result, definition));
+                    if (!definition.Skip)
+                        list.Add(new Token(result, definition));
                     break;
                 }
 
                 if (!isSuccess)
                     throw new Exception("Invalid expression");
             }
+
+            return list;
         }
     }
 }

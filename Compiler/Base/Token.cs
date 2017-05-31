@@ -9,18 +9,22 @@ namespace Compiler.Base
 {
     public class Token
     {
-        private Match result;
+        public string Name { get; private set; }
+        public int Position { get; private set; }
+        public int Length { get; private set; }
+        public string Value { get; private set; }
+        public TokenDefinition Definition { get; set; }
 
         public Token(Match result, TokenDefinition definition)
         {
-            this.result = result;
+            Value = result.Value;
+            Name = definition.Name;
+            Position = result.Index;
+            Length = result.Length;
             Definition = definition;
         }
 
-        public string Name { get; set; }
-        public int Position { get; set; }
-        public int Length { get; set; }
-        public string Value { get; set; }
-        public TokenDefinition Definition { get; set; }
+        public override string ToString() => $"{Name} [{Value}]";
+        
     }
 }
