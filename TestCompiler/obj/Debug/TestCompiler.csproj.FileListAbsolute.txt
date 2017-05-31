@@ -1,0 +1,5 @@
+D:\Projekte\Visual 2017\TheLanguage\TestCompiler\bin\Debug\TestCompiler.exe.config
+D:\Projekte\Visual 2017\TheLanguage\TestCompiler\bin\Debug\TestCompiler.exe
+D:\Projekte\Visual 2017\TheLanguage\TestCompiler\bin\Debug\TestCompiler.pdb
+D:\Projekte\Visual 2017\TheLanguage\TestCompiler\obj\Debug\TestCompiler.exe
+D:\Projekte\Visual 2017\TheLanguage\TestCompiler\obj\Debug\TestCompiler.pdb

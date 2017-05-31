@@ -1,0 +1,6 @@
+D:\Projekte\Visual 2017\TheLanguage\Compiler\bin\Debug\Compiler.exe.config
+D:\Projekte\Visual 2017\TheLanguage\Compiler\bin\Debug\Compiler.exe
+D:\Projekte\Visual 2017\TheLanguage\Compiler\bin\Debug\Compiler.pdb
+D:\Projekte\Visual 2017\TheLanguage\Compiler\obj\Debug\Compiler.csprojResolveAssemblyReference.cache
+D:\Projekte\Visual 2017\TheLanguage\Compiler\obj\Debug\Compiler.exe
+D:\Projekte\Visual 2017\TheLanguage\Compiler\obj\Debug\Compiler.pdb
