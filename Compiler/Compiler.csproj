@@ -42,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Tokenizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Base\Token.cs" />
+    <Compile Include="Base\TokenDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

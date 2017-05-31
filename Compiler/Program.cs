@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
+using Compiler.Base;
 
 namespace Compiler
 {
@@ -11,20 +12,11 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            DynamicMethod method = new DynamicMethod("Test", typeof(int), null);
-            var ilGenerator = method.GetILGenerator();
+            string input = "1 + 1";
 
-            // return 1+4;
-
-            ilGenerator.Emit(OpCodes.Ldc_I4, 1);
-            ilGenerator.Emit(OpCodes.Ldc_I4, 4);
-            ilGenerator.Emit(OpCodes.Add);
-            ilGenerator.Emit(OpCodes.Ret);
-
-
-            var func = (Func<int>)method.CreateDelegate(typeof(Func<int>));
-            Console.WriteLine(func());
-            Console.ReadLine();
+            TokenDefinition integerDefinition = new TokenDefinition("Integer", "[0-9]+");
+            TokenDefinition spaceDefinition = new TokenDefinition("Space", " ");
+            TokenDefinition plusDefiniton = new TokenDefinition("Plus", "+");
         }
     }
 }

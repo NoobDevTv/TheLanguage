@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
+using System.Text.RegularExpressions;
 
 namespace TestCompiler
 {
@@ -11,20 +12,24 @@ namespace TestCompiler
     {
         static void Main(string[] args)
         {
-            //1+1
-            DynamicMethod dm = new DynamicMethod("Test", typeof(int), null);
-            var generator = dm.GetILGenerator();
+            string test = "13456 + 1"; // 1+1
 
-            generator.Emit(OpCodes.Ldc_I4, 1);
-            generator.Emit(OpCodes.Ldc_I4, 1);
-            generator.Emit(OpCodes.Add);
-            generator.Emit(OpCodes.Ret);
+            Regex integer = new Regex("[0-9]+");
 
+            int a = 1 + 1;
             
 
-            var methode = (Func<int>)dm.CreateDelegate(typeof(Func<int>));
+            for (int i = 0; i < test.Length;)
+            {
+                var result = integer.Match(test,i);
+                if (!result.Success || i != result.Index)
+                    throw new Exception();
+                i += result.Length;
+            }
+           
 
-            Console.WriteLine(methode());
+
+
             Console.ReadLine();
         }
     }
