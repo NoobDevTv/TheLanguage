@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
+using Compiler.Scanning;
+using Compiler.Parsing;
 
 namespace Compiler
 {
@@ -11,20 +13,25 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            DynamicMethod method = new DynamicMethod("Test", typeof(int), null);
-            var ilGenerator = method.GetILGenerator();
+            string input = "1 + 2 + 3";
+            var tokenDefinitions = new List<TokenDefinition>() {
+                new TokenDefinition("Integer", "[0-9]+"),
+                new TokenDefinition("Space", " ", true),
+                new TokenDefinition("Plus", "[+]")
+            };
 
-            // return 1+4;
+            var syntaxNodeDefinitions = new List<SyntaxNodeDefinition>()
+            {
+                new SyntaxNodeDefinition("Addition","Integer", "Plus", "Integer"),
+            };
 
-            ilGenerator.Emit(OpCodes.Ldc_I4, 1);
-            ilGenerator.Emit(OpCodes.Ldc_I4, 4);
-            ilGenerator.Emit(OpCodes.Add);
-            ilGenerator.Emit(OpCodes.Ret);
+            var tokenizer = new Tokenizer(tokenDefinitions);
 
+            var tokenResult = tokenizer.Parse(input);
 
-            var func = (Func<int>)method.CreateDelegate(typeof(Func<int>));
-            Console.WriteLine(func());
-            Console.ReadLine();
+            var parser = new Parser(syntaxNodeDefinitions);
+
+            var synatxTree = parser.Parse(tokenResult);
         }
     }
 }
