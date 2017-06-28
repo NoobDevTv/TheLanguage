@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\Parser.cs" />
+    <Compile Include="Parsing\SyntaxNode.cs" />
+    <Compile Include="Parsing\SyntaxNodeDefinition.cs" />
+    <Compile Include="Parsing\SyntaxTree.cs" />
     <Compile Include="Scanning\Tokenizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
