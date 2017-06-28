@@ -68,3 +68,5 @@ artifacts/
 .builds
 *.pidb
 *.svclog
+/packages
+/packages

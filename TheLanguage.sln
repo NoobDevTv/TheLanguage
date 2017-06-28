@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{48ED32A1-1B97-4AAF-A50D-C4F6F4C49593}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynTest", "RoslynTest\RoslynTest.csproj", "{6AE83294-8FA9-4F31-9C67-3B02C4717D96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{48ED32A1-1B97-4AAF-A50D-C4F6F4C49593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48ED32A1-1B97-4AAF-A50D-C4F6F4C49593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48ED32A1-1B97-4AAF-A50D-C4F6F4C49593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE83294-8FA9-4F31-9C67-3B02C4717D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE83294-8FA9-4F31-9C67-3B02C4717D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE83294-8FA9-4F31-9C67-3B02C4717D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE83294-8FA9-4F31-9C67-3B02C4717D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
