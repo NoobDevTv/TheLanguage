@@ -1,4 +1,5 @@
-﻿using Compiler.Scanning;
+﻿using Compiler.Parsing.Definition;
+using Compiler.Scanning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +10,19 @@ namespace Compiler.Parsing
 {
     public class Parser
     {
-        public List<SyntaxNodeDefinition> Defintions { get;  }
 
-
-        public Parser(List<SyntaxNodeDefinition> defintion)
+        public Parser()
         {
-            Defintions = defintion;
         }
 
         public SyntaxTree Parse(List<Token> tokens)
         {
-            SyntaxTree tree = new SyntaxTree();
 
-            foreach (var defintion in Defintions)
-            {
-                if (defintion.Check(tokens))
-                {
-                    Console.WriteLine($"{defintion} gefunden");
-                }
-            }
+            ExpressionSyntax expressions = new ExpressionSyntax();
 
-            return tree;
+            expressions.Check(tokens);
+
+            return new SyntaxTree(expressions);
         }
     }
 }
