@@ -21,6 +21,7 @@ namespace Compiler
                 new TokenDefinition("Plus", "[+]")
             };
 
+            Func<int> alpha = () => 5;
 
             var tokenizer = new Tokenizer(tokenDefinitions);
 
