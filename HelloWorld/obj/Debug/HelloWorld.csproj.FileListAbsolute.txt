@@ -1,6 +1,0 @@
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\bin\Debug\HelloWorld.exe.config
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\bin\Debug\HelloWorld.exe
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\bin\Debug\HelloWorld.pdb
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\obj\Debug\HelloWorld.exe
-D:\Projekte\Visual 2017\TheLanguage\HelloWorld\obj\Debug\HelloWorld.pdb
