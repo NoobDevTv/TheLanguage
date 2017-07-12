@@ -45,15 +45,20 @@
     <Compile Include="Parsing\Definition\AdditionSyntax.cs" />
     <Compile Include="Parsing\Definition\ExpressionSyntax.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
+    <Compile Include="Parsing\Definition\MultiplicationSyntax.cs" />
+    <Compile Include="Parsing\Definition\OperationSyntax.cs" />
     <Compile Include="Parsing\Definition\SubstractionSyntax.cs" />
+    <Compile Include="Parsing\Definition\TokenSyntax.cs" />
     <Compile Include="Parsing\Parser.cs" />
     <Compile Include="Parsing\Syntax.cs" />
+    <Compile Include="Parsing\SyntaxStream.cs" />
     <Compile Include="Parsing\SyntaxTree.cs" />
     <Compile Include="Scanning\Tokenizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanning\Token.cs" />
     <Compile Include="Scanning\TokenDefinition.cs" />
+    <Compile Include="Visting\Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

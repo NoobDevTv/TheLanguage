@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Compiler.Scanning;
 using Compiler.Parsing;
+using Compiler.Visting;
 
 namespace Compiler
 {
@@ -13,12 +14,15 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "1 + 2 + 3 - 2";
+            string input = "(1+2)*(3-4)";
             var tokenDefinitions = new List<TokenDefinition>() {
                 new TokenDefinition("Integer", "[0-9]+"),
                 new TokenDefinition("Space", " ", true),
                 new TokenDefinition("Minus", "[-]"),
-                new TokenDefinition("Plus", "[+]")
+                new TokenDefinition("Plus", "[+]"),
+                new TokenDefinition("Point", "[*]"),
+                new TokenDefinition("BracketOpen", "[(]"),
+                new TokenDefinition("BracketClose", "[)]")
             };
 
             Func<int> alpha = () => 5;
@@ -30,6 +34,11 @@ namespace Compiler
             var parser = new Parser();
 
             var synatxTree = parser.Parse(tokenResult);
+
+            Visitor visitor = new Visitor();
+
+            var func = visitor.Compile(synatxTree.Expression);
+            var resultValue = func();
         }
     }
 }
