@@ -22,6 +22,6 @@ namespace Compiler.Parsing
             return Name;
         }
 
-        public abstract bool Check(List<Token> tokens);
+        public abstract bool Check(SyntaxStream syntaxStream);
     }
 }

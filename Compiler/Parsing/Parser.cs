@@ -20,7 +20,7 @@ namespace Compiler.Parsing
 
             ExpressionSyntax expressions = new ExpressionSyntax();
 
-            expressions.Check(tokens);
+            expressions.Check(new SyntaxStream( tokens));
 
             return new SyntaxTree(expressions);
         }
