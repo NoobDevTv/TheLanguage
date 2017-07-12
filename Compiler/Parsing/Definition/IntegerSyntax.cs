@@ -16,14 +16,14 @@ namespace Compiler.Parsing.Definition
         {
         }
 
-        public override bool Check(List<Token> tokens)
+        public override bool Check(SyntaxStream syntaxStream)
         {
-            if (tokens.Count != 1)
+            if (syntaxStream.Count != 1)
                 return false;
 
-            if (tokens[0].Name == "Integer")
+            if (syntaxStream[0].Name == "Integer")
             {
-                Value = int.Parse(tokens[0].Value);
+                Value = int.Parse(syntaxStream[0].Value);
                 return true;
             }
 

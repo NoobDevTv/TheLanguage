@@ -17,18 +17,22 @@ namespace Compiler.Parsing.Definition
         {
         }
 
-        public override bool Check(List<Token> tokens)
+        public override bool Check(SyntaxStream syntaxStream)
         {
+            Expression = new MultiplicationSyntax();
+            if (Expression.Check(syntaxStream))
+                return true;
+
             Expression = new SubstractionSyntax();
-            if (Expression.Check(tokens))
+            if (Expression.Check(syntaxStream))
                 return true;
 
             Expression = new AdditionSyntax();
-            if(Expression.Check(tokens))
+            if(Expression.Check(syntaxStream))
                 return true;
 
             Expression = new IntegerSyntax();
-            if (Expression.Check(tokens))
+            if (Expression.Check(syntaxStream))
                 return true;
 
             return false;
