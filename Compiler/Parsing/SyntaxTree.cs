@@ -4,9 +4,9 @@ namespace Compiler.Parsing
 {
     public class SyntaxTree
     {
-        public ExpressionSyntax Expression { get; set; }
+        public Syntax Expression { get; set; }
 
-        public SyntaxTree(ExpressionSyntax syntax)
+        public SyntaxTree(Syntax syntax)
         {
             Expression = syntax;
         }

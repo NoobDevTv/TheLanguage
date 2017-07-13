@@ -7,36 +7,50 @@ using System.Threading.Tasks;
 
 namespace Compiler.Parsing.Definition
 {
-    public abstract class OperationSyntax : Syntax
+    public class OperationSyntax : Syntax
     {
-        public ExpressionSyntax Left { get; set; }
-        public ExpressionSyntax Right { get; set; }
-
+        public Syntax Left { get; private set; }
+        public Syntax Right { get; private set; }
         public string TokenName { get; }
+        public OperationKind Operation { get; set; }
 
-        public OperationSyntax(string name,string tokenName) : base(name)
+        public OperationSyntax(string name, string tokenName) : base(name)
         {
             TokenName = tokenName;
         }
 
-        public override bool Check(SyntaxStream syntaxStream)
+        public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
         {
-            if (syntaxStream.Count == 3)
+            syntax = null;
+
+            if (stream.Count < 3)
                 return false;
 
-            for (int i = 0; i < syntaxStream.Count; i++)
+            foreach (var operation in Enum.GetNames(typeof(OperationKind)))
             {
-                if (syntaxStream[i].Name == TokenName)
+                for (int i = 1; i < stream.Count - 1; i++)
                 {
-                    Left = new ExpressionSyntax();
-                    Right = new ExpressionSyntax();
-
-                    if (Left.Check(syntaxStream.Take(i)) && Right.Check(syntaxStream.Skip(i + 1)))
+                    if (stream[i].Name == operation)
+                    {
+                        Left = scanner.Scan(stream.Take(i));
+                        Right = scanner.Scan(stream.Skip(i + 1));
+                        Operation = (OperationKind)Enum.Parse(typeof(OperationKind), operation);
                         return true;
+                    }
                 }
             }
+            
 
             return false;
+        }
+
+        public enum OperationKind
+        {
+            Divisor,
+            Modulo,
+            Point,
+            Minus,
+            Plus
         }
     }
 }

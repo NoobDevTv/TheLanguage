@@ -18,6 +18,7 @@ namespace Compiler.Parsing.Definition
 
         public override bool Check(SyntaxStream syntaxStream)
         {
+            /*
             if (syntaxStream.Count != 1)
                 return false;
 
@@ -26,6 +27,7 @@ namespace Compiler.Parsing.Definition
                 Value = int.Parse(syntaxStream[0].Value);
                 return true;
             }
+            */
 
             return false;
         }

@@ -21,6 +21,7 @@ namespace Compiler
                 new TokenDefinition("Minus", "[-]"),
                 new TokenDefinition("Plus", "[+]"),
                 new TokenDefinition("Point", "[*]"),
+                new TokenDefinition("Divisor", "[/]"),
                 new TokenDefinition("BracketOpen", "[(]"),
                 new TokenDefinition("BracketClose", "[)]")
             };

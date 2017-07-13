@@ -10,19 +10,15 @@ namespace Compiler.Parsing
 {
     public class Parser
     {
+        Scanner scanner;
 
         public Parser()
         {
+            scanner = new Scanner();
         }
 
-        public SyntaxTree Parse(List<Token> tokens)
-        {
-
-            ExpressionSyntax expressions = new ExpressionSyntax();
-
-            expressions.Check(new SyntaxStream( tokens));
-
-            return new SyntaxTree(expressions);
-        }
+        public SyntaxTree Parse(List<Token> tokens) => new SyntaxTree(Scanner.Scan(new SyntaxStream(tokens)));
+            
+        
     }
 }

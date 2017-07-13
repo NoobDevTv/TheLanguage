@@ -42,14 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsing\Definition\AdditionSyntax.cs" />
-    <Compile Include="Parsing\Definition\ExpressionSyntax.cs" />
+    <Compile Include="Parsing\IScanable.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
-    <Compile Include="Parsing\Definition\MultiplicationSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />
-    <Compile Include="Parsing\Definition\SubstractionSyntax.cs" />
     <Compile Include="Parsing\Definition\TokenSyntax.cs" />
     <Compile Include="Parsing\Parser.cs" />
+    <Compile Include="Parsing\RawKind.cs" />
+    <Compile Include="Parsing\Scanner.cs" />
     <Compile Include="Parsing\Syntax.cs" />
     <Compile Include="Parsing\SyntaxStream.cs" />
     <Compile Include="Parsing\SyntaxTree.cs" />

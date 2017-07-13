@@ -15,11 +15,14 @@ namespace Compiler.Parsing.Definition
             : base(nameof(TokenSyntax))
         {
             Token = token;
+            Name = token.Name;
         }
 
         public override bool Check(SyntaxStream syntaxStream)
         {
             return true;
         }
+
+        public override string ToString() => Name;
     }
 }

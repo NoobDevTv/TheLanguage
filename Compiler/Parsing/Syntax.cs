@@ -7,7 +7,7 @@ using Compiler.Scanning;
 
 namespace Compiler.Parsing
 {
-    public abstract class Syntax
+    public abstract class Syntax : IScanable
     {
 
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace Compiler.Parsing
         {
             return Name;
         }
-
-        public abstract bool Check(SyntaxStream syntaxStream);
+        
+        public abstract bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax);
     }
 }
