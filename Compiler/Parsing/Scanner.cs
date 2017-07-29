@@ -11,23 +11,22 @@ namespace Compiler.Parsing
     public delegate bool SyntaxParseDelegate(SyntaxStream stream, Scanner scanner, out Syntax syntax);
     public class Scanner
     {
-        Dictionary<int, SyntaxParseDelegate> SyntaxDictionary;
+        Dictionary<int, Type> SyntaxDictionary;
 
         public Scanner()
         {
-            SyntaxDictionary = new Dictionary<int, SyntaxParseDelegate>();
+            SyntaxDictionary = new Dictionary<int, Type>();
 
             Collect();
         }
-
-
+        
         internal Syntax Scan(SyntaxStream syntaxStream)
         {
             foreach (var syntax in SyntaxDictionary)
             {
-                if (syntax.Value(syntaxStream, this, out Syntax returnSyntax))
-                    return returnSyntax;
-
+                var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
+                if (tmpObject.TryParse(syntaxStream, this))
+                    return tmpObject;
             }
 
 
@@ -39,7 +38,7 @@ namespace Compiler.Parsing
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => typeof(Syntax).IsAssignableFrom(t));
 
             foreach (var type in types)
-                SyntaxDictionary.Add(SyntaxDictionary.Count + 1, ((Syntax)Activator.CreateInstance(type)).TryParse);
+                SyntaxDictionary.Add(SyntaxDictionary.Count + 1, type);
         }
     }
 }

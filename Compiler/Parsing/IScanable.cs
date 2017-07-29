@@ -8,6 +8,6 @@ namespace Compiler.Parsing
 {
     interface IScanable
     {
-        bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax);
+        bool TryParse(SyntaxStream stream, Scanner scanner);
     }
 }

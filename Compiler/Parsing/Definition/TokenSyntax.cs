@@ -11,19 +11,15 @@ namespace Compiler.Parsing.Definition
     {
         public Token Token { get; }
 
-        public TokenSyntax(Token token) 
+        public TokenSyntax(Token token)
             : base(nameof(TokenSyntax))
         {
             Token = token;
             Name = token.Name;
         }
-        
+
         public override string ToString() => Name;
 
-        public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
-        {
-            syntax = null;
-            return false;
-        }
+        public override bool TryParse(SyntaxStream stream, Scanner scanner) => false;
     }
 }
