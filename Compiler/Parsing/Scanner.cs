@@ -14,14 +14,20 @@ namespace Compiler.Parsing
 
         public Scanner()
         {
+            var a = 1 + 3 + ((3 * 5) * (1 + 3)) + 4;
+
             SyntaxDictionary = new Dictionary<int, SyntaxParseDelegate>();
         }
 
+        
         internal Syntax Scan(SyntaxStream syntaxStream)
         {
             foreach (var syntax in SyntaxDictionary)
+            {
                 if (syntax.Value(syntaxStream, this, out Syntax returnSyntax))
                     return returnSyntax;
+
+            }
 
 
             throw new Exception("No valid Expression found");

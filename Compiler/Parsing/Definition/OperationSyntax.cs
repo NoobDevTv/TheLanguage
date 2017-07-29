@@ -40,7 +40,6 @@ namespace Compiler.Parsing.Definition
                 }
             }
             
-
             return false;
         }
 

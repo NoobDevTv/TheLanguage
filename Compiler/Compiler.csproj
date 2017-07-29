@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\Definition\ParentSyntax.cs" />
     <Compile Include="Parsing\IScanable.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />

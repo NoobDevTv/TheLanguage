@@ -10,10 +10,9 @@ namespace Compiler.Parsing
 {
     public class SyntaxStream
     {
-        private List<Syntax> syntaxList;
-
         public int Count => baseStream != null ? length : syntaxList.Count;
-
+        
+        private List<Syntax> syntaxList;
         private SyntaxStream baseStream;
         private int index;
         private int length;
@@ -29,14 +28,13 @@ namespace Compiler.Parsing
             }
         }
 
-        public IEnumerable<Syntax> SyntaxList => baseStream == null ? syntaxList : baseStream.SyntaxList.Skip(index).Take(length); 
+        public IEnumerable<Syntax> SyntaxList => baseStream == null ? syntaxList : baseStream.SyntaxList.Skip(index).Take(length);
 
         public SyntaxStream(IEnumerable<Token> tokenList)
         {
             syntaxList = new List<Syntax>();
             syntaxList.AddRange(tokenList.Select(i => new TokenSyntax(i)));
         }
-
         private SyntaxStream(SyntaxStream syntaxStream, int index, int length)
         {
             baseStream = syntaxStream;
@@ -53,6 +51,8 @@ namespace Compiler.Parsing
         {
             return new SyntaxStream(this, 0, length);
         }
+
+        public SyntaxStream Get(int index, int length) => new SyntaxStream(this, index, length);
 
         public void Replace(Syntax syntax, int start, int length)
         {

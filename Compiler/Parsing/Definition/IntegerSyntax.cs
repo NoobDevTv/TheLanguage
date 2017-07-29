@@ -9,25 +9,29 @@ namespace Compiler.Parsing.Definition
 {
     public class IntegerSyntax : Syntax
     {
-        public int Value { get; set; }
+        public int Value { get; private set; }
 
-        public IntegerSyntax() 
+        public IntegerSyntax()
             : base(nameof(IntegerSyntax))
         {
         }
 
-        public override bool Check(SyntaxStream syntaxStream)
+        public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
         {
-            /*
-            if (syntaxStream.Count != 1)
+            syntax = null;
+
+            if (stream.Count != 1)
                 return false;
 
-            if (syntaxStream[0].Name == "Integer")
+            if (stream[0] is TokenSyntax tokenSyntax)
             {
-                Value = int.Parse(syntaxStream[0].Value);
-                return true;
+                if (tokenSyntax.Name == "Integer")
+                {
+                    Value = int.Parse(tokenSyntax.Token.Value);
+                    syntax = this;
+                    return true;
+                }
             }
-            */
 
             return false;
         }

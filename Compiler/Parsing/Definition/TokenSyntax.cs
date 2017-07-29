@@ -17,12 +17,13 @@ namespace Compiler.Parsing.Definition
             Token = token;
             Name = token.Name;
         }
-
-        public override bool Check(SyntaxStream syntaxStream)
-        {
-            return true;
-        }
-
+        
         public override string ToString() => Name;
+
+        public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
+        {
+            syntax = null;
+            return false;
+        }
     }
 }

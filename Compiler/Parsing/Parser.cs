@@ -17,7 +17,7 @@ namespace Compiler.Parsing
             scanner = new Scanner();
         }
 
-        public SyntaxTree Parse(List<Token> tokens) => new SyntaxTree(Scanner.Scan(new SyntaxStream(tokens)));
+        public SyntaxTree Parse(List<Token> tokens) => new SyntaxTree(scanner.Scan(new SyntaxStream(tokens)));
             
         
     }
