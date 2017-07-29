@@ -13,7 +13,10 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "(1+2)*(3-4)";
+            string input = "2 + (1 + 2) * (3 - 4) + 2 ";
+
+
+
             var tokenDefinitions = new List<TokenDefinition>() {
                 new TokenDefinition("Integer", "[0-9]+"),
                 new TokenDefinition("Space", " ", true),

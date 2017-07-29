@@ -24,9 +24,13 @@ namespace Compiler.Parsing
         {
             foreach (var syntax in SyntaxDictionary)
             {
-                var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
-                if (tmpObject.TryParse(syntaxStream, this))
-                    return tmpObject;
+                bool result = false;
+                do
+                {
+                    var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
+                    result = tmpObject.TryParse(syntaxStream, this);
+                } while (result);
+                
             }
 
 
@@ -35,7 +39,16 @@ namespace Compiler.Parsing
 
         internal void Collect()
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => typeof(Syntax).IsAssignableFrom(t));
+            //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetCustomAttributes<SyntaxAttribute>() != null);
+
+            
+            var ass = Assembly.GetExecutingAssembly();
+            
+            var types = from type in ass.GetTypes()
+                        let attribute = type.GetCustomAttribute<SyntaxAttribute>()
+                        where attribute != null
+                        orderby attribute.Order descending
+                        select type;
 
             foreach (var type in types)
                 SyntaxDictionary.Add(SyntaxDictionary.Count + 1, type);

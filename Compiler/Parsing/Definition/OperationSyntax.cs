@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Compiler.Parsing.Definition
 {
+    [Syntax(10)]
     public class OperationSyntax : Syntax
     {
         public Syntax Left { get; private set; }
         public Syntax Right { get; private set; }
-        public string TokenName { get; }
         public OperationKind Operation { get; set; }
 
-        public OperationSyntax(string name, string tokenName) : base(name)
+        public OperationSyntax() : base(nameof(OperationSyntax))
         {
-            TokenName = tokenName;
         }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)

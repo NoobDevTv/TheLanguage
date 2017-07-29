@@ -7,6 +7,7 @@ using Compiler.Scanning;
 
 namespace Compiler.Parsing.Definition
 {
+    [Syntax(0)]
     public class IntegerSyntax : Syntax
     {
         public int Value { get; private set; }
@@ -26,6 +27,7 @@ namespace Compiler.Parsing.Definition
                 if (tokenSyntax.Name == "Integer")
                 {
                     Value = int.Parse(tokenSyntax.Token.Value);
+                    stream.Replace(this, 0, 1);
                     return true;
                 }
             }
