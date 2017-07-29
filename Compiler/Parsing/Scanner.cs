@@ -13,9 +13,7 @@ namespace Compiler.Parsing
         Dictionary<int, SyntaxParseDelegate> SyntaxDictionary;
 
         public Scanner()
-        {
-            var a = 1 + 3 + ((3 * 5) * (1 + 3)) + 4;
-
+        {            
             SyntaxDictionary = new Dictionary<int, SyntaxParseDelegate>();
         }
 

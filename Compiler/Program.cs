@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Compiler.Scanning;
 using Compiler.Parsing;
-using Compiler.Visting;
 
 namespace Compiler
 {
@@ -35,11 +34,8 @@ namespace Compiler
             var parser = new Parser();
 
             var synatxTree = parser.Parse(tokenResult);
-
-            Visitor visitor = new Visitor();
-
-            var func = visitor.Compile(synatxTree.Expression);
-            var resultValue = func();
+            
+            
         }
     }
 }
