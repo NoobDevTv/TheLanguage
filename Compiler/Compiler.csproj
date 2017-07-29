@@ -51,6 +51,7 @@
     <Compile Include="Parsing\RawKind.cs" />
     <Compile Include="Parsing\Scanner.cs" />
     <Compile Include="Parsing\Syntax.cs" />
+    <Compile Include="Parsing\SyntaxAttribute.cs" />
     <Compile Include="Parsing\SyntaxStream.cs" />
     <Compile Include="Parsing\SyntaxTree.cs" />
     <Compile Include="Scanning\Tokenizer.cs" />
