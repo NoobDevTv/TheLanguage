@@ -15,6 +15,10 @@ namespace Compiler.Parsing.Definition
             : base(nameof(IntegerSyntax))
         {
         }
+        private IntegerSyntax(IntegerSyntax integerSyntax) : this()
+        {
+            Value = integerSyntax.Value;
+        }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
         {
@@ -28,7 +32,7 @@ namespace Compiler.Parsing.Definition
                 if (tokenSyntax.Name == "Integer")
                 {
                     Value = int.Parse(tokenSyntax.Token.Value);
-                    syntax = this;
+                    syntax = new IntegerSyntax(this);
                     return true;
                 }
             }

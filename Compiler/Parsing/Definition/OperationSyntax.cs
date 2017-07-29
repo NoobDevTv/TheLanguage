@@ -18,6 +18,10 @@ namespace Compiler.Parsing.Definition
         {
             TokenName = tokenName;
         }
+        private OperationSyntax(OperationSyntax operationSyntax) : this(operationSyntax.Name, operationSyntax.TokenName)
+        {
+
+        }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax)
         {
@@ -35,6 +39,7 @@ namespace Compiler.Parsing.Definition
                         Left = scanner.Scan(stream.Take(i));
                         Right = scanner.Scan(stream.Skip(i + 1));
                         Operation = (OperationKind)Enum.Parse(typeof(OperationKind), operation);
+                        syntax = new OperationSyntax(this);
                         return true;
                     }
                 }

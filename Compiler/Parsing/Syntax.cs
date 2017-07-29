@@ -17,11 +17,9 @@ namespace Compiler.Parsing
             Name = name;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-        
+        public override string ToString() => Name;
+                
         public abstract bool TryParse(SyntaxStream stream, Scanner scanner, out Syntax syntax);
+
     }
 }
