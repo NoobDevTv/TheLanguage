@@ -24,16 +24,11 @@ namespace Compiler.Parsing
         {
             foreach (var syntax in SyntaxDictionary)
             {
-                bool result = false;
-                do
-                {
-                    var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
-                    result = tmpObject.TryParse(syntaxStream, this);
-                } while (result);
-                
+                var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
+                if (tmpObject.TryParse(syntaxStream, this))
+                    return tmpObject;
             }
-
-
+            
             throw new Exception("No valid Expression found");
         }
 

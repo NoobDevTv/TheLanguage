@@ -27,7 +27,6 @@ namespace Compiler.Parsing.Definition
                 if (tokenSyntax.Name == "Integer")
                 {
                     Value = int.Parse(tokenSyntax.Token.Value);
-                    stream.Replace(this, 0, 1);
                     return true;
                 }
             }

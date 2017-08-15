@@ -13,7 +13,7 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "2 + (1 + 2) * (3 - 4) + 2 ";
+            string input = "(2 + 2 ) * ((1 + 3 ) * 4) ";
 
 
 

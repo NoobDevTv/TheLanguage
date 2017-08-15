@@ -20,7 +20,8 @@ namespace Compiler.Parsing.Definition
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
             
-            if (!(stream[0].Name == "BracketOpen"))
+            if (stream[0].Name != "BracketOpen" ||
+                stream[stream.Count - 1].Name != "BracketClose")
                 return false;
 
             int openCount = 1;
@@ -29,24 +30,28 @@ namespace Compiler.Parsing.Definition
             {
                 if (stream[i].Name == "BracketOpen")
                     openCount++;
+
                 else if(stream[i].Name == "BracketClose")
                 {
                     openCount--;
-                    if (openCount == 0)
+
+                    if (openCount == 0 && i != stream.Count - 1)
+                    {
+                        return false;
+                    }
+
+                    if (openCount == 0 &&
+                        i == stream.Count - 1)
                     {
                         Open = stream[0];
                         Close = stream[i];
 
                         Member = scanner.Scan(stream.Get(1, i -1));
-
-                        stream.Replace(this, 0, i - 1);
-
+                        
                         return true;
                     }
                 }
             }
-
-            
 
             return false;
         }

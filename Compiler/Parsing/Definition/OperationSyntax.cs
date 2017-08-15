@@ -24,11 +24,18 @@ namespace Compiler.Parsing.Definition
             if (stream.Count < 3)
                 return false;
 
-            foreach (var operation in Enum.GetNames(typeof(OperationKind)))
+            foreach (var operation in Enum.GetNames(typeof(OperationKind)).Reverse())
             {
-                for (int i = 1; i < stream.Count - 1; i++)
+                int openBracket = 0;
+
+                for (int i = 0; i < stream.Count - 1; i++)
                 {
-                    if (stream[i].Name == operation)
+                    if (stream[i].Name == "BracketOpen")
+                        openBracket++;
+                    else if (stream[i].Name == "BracketClose")
+                        openBracket--;
+                    else if (stream[i].Name == operation &&
+                             openBracket == 0)
                     {
                         Left = scanner.Scan(stream.Take(i));
                         Right = scanner.Scan(stream.Skip(i + 1));
@@ -37,7 +44,7 @@ namespace Compiler.Parsing.Definition
                     }
                 }
             }
-            
+
             return false;
         }
 
