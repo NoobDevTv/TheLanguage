@@ -13,7 +13,7 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "(2 + 2 ) * ((1 + 3 ) * 4) ";
+            string input = "(2 + 2 ) * ((1 + 3 ) * 4) * 2 - 1 + 1 ";
 
 
 
@@ -37,8 +37,13 @@ namespace Compiler
             var parser = new Parser();
 
             var synatxTree = parser.Parse(tokenResult);
-            
-            
+
+            var func = synatxTree.Visit();
+
+            Console.WriteLine();
+            Console.WriteLine(func());
+
+            Console.ReadLine();
         }
     }
 }

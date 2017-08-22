@@ -1,4 +1,5 @@
 ﻿using Compiler.Scanning;
+using Compiler.Visitors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,10 @@ namespace Compiler.Parsing.Definition
         public override string ToString() => Name;
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner) => false;
+
+        public override void Visit(Scope scope)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

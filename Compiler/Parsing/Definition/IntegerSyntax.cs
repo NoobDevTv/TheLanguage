@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Compiler.Scanning;
+using Compiler.Visitors;
+using System.Reflection.Emit;
 
 namespace Compiler.Parsing.Definition
 {
@@ -32,6 +34,12 @@ namespace Compiler.Parsing.Definition
             }
 
             return false;
+        }
+
+        public override void Visit(Scope scope)
+        {
+            Console.WriteLine(Value);
+            scope.Generator.Emit(OpCodes.Ldc_I4, Value);
         }
     }
 }

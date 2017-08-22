@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanning\Token.cs" />
     <Compile Include="Scanning\TokenDefinition.cs" />
+    <Compile Include="Visitors\Scope.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -54,6 +54,7 @@ class Program
 		switch (test){
 			case (_ is Tree): => 5;
 		}
+
 		return;
 		return 5;
 	}

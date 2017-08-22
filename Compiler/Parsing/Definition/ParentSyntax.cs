@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compiler.Visitors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,11 @@ namespace Compiler.Parsing.Definition
             }
 
             return false;
+        }
+
+        public override void Visit(Scope scope)
+        {
+            Member.Visit(scope);
         }
     }
 }

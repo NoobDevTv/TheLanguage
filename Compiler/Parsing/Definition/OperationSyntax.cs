@@ -1,7 +1,9 @@
 ﻿using Compiler.Scanning;
+using Compiler.Visitors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +48,37 @@ namespace Compiler.Parsing.Definition
             }
 
             return false;
+        }
+
+        public override void Visit(Scope scope)
+        {
+            Left.Visit(scope);
+            Right.Visit(scope);
+
+            switch (Operation)
+            {
+                case OperationKind.Divisor:
+                    scope.Generator.Emit(OpCodes.Div);
+                    break;
+                case OperationKind.Modulo:
+                    
+                    break;
+                case OperationKind.Point:
+                    scope.Generator.Emit(OpCodes.Mul);
+                    break;
+                case OperationKind.Minus:
+                    scope.Generator.Emit(OpCodes.Sub);
+                    break;
+                case OperationKind.Plus:
+                    scope.Generator.Emit(OpCodes.Add);
+                    break;
+                default:
+                    break;
+            }
+
+            
+
+            Console.WriteLine(Operation);
         }
 
         public enum OperationKind

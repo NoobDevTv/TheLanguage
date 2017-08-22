@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Compiler.Scanning;
+using Compiler.Visitors;
 
 namespace Compiler.Parsing
 {
@@ -20,6 +21,8 @@ namespace Compiler.Parsing
         public override string ToString() => Name;
                 
         public abstract bool TryParse(SyntaxStream stream, Scanner scanner);
+
+        public abstract void Visit(Scope scope);
 
     }
 }

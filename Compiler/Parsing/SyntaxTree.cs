@@ -1,4 +1,6 @@
-﻿using Compiler.Parsing.Definition;
+﻿using System;
+using Compiler.Parsing.Definition;
+using Compiler.Visitors;
 
 namespace Compiler.Parsing
 {
@@ -9,6 +11,14 @@ namespace Compiler.Parsing
         public SyntaxTree(Syntax syntax)
         {
             Expression = syntax;
+        }
+
+        public Func<int> Visit()
+        {
+            Scope scope = new Scope();
+            Expression.Visit(scope);
+
+            return scope.GetMethode();
         }
     }
 }
