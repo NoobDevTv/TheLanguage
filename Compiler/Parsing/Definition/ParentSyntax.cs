@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Compiler.Parsing.Definition
 {
-    [Syntax(20)]
+    [Syntax(30)]
     public class ParentSyntax : Syntax
     {
         public Syntax Open { get; private set; }

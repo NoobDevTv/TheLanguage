@@ -7,34 +7,40 @@ using Compiler.Visitors;
 
 namespace Compiler.Parsing.Definition
 {
-    [Syntax(30)]
+    [Syntax(40)]
     public class StatmentSyntax : Syntax
     {
-        public Syntax Statment { get; private set; }
+        public List<Syntax> Statments { get; private set; }
 
 
         public StatmentSyntax() : base(nameof(StatmentSyntax))
         {
-
+            Statments = new List<Syntax>();
         }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
+            var lastPosition = 0;
+            var result = false;
             for (int i = 0; i < stream.Count; i++)
             {
                 if(stream[i].Name == "CodeLineEnd")
                 {
-                    Statment = scanner.Scan(stream.Take(i));
-                    return true;
+                    Statments.Add(scanner.Scan(stream.Get(lastPosition,i-lastPosition)));
+                    lastPosition = i +1 ;
+                    result = true;
                 }
             }
 
-            return false;
+            return result;
         }
 
         public override void Visit(Scope scope)
         {
-            Statment.Visit(scope);
+            foreach (var statment in Statments)
+            {
+                statment.Visit(scope);
+            }
         }
     }
 }

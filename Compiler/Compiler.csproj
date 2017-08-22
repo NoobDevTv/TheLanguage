@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\Definition\IdentifierSyntax.cs" />
     <Compile Include="Parsing\Definition\ParentSyntax.cs" />
     <Compile Include="Parsing\Definition\ReturnSyntax.cs" />
     <Compile Include="Parsing\Definition\StatmentSyntax.cs" />
+    <Compile Include="Parsing\Definition\VariableDeclerationSyntax.cs" />
     <Compile Include="Parsing\IScanable.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />

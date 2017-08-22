@@ -13,7 +13,7 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "var alpha = 5; return alpha;";
+            string input = "var alpha = 5; var beta = 6; ret alpha +2 *beta;";
 
 
 
@@ -22,6 +22,9 @@ namespace Compiler
                 new TokenDefinition("CodeLineEnd",";"),
                 new TokenDefinition("Return", "ret"),
                 new TokenDefinition("Integer", "[0-9]+"),
+                new TokenDefinition("Var","var"),
+                new TokenDefinition("Identifier","[a-zA-Z][a-zA-Z0-9]+"),
+                new TokenDefinition("AssignEquals","[=]"),
                 new TokenDefinition("Space", " ", true),
                 new TokenDefinition("Minus", "[-]"),
                 new TokenDefinition("Plus", "[+]"),
