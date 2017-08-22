@@ -21,8 +21,6 @@ namespace Compiler.Visitors
 
         public Func<int> GetMethode()
         {
-            Generator.Emit(OpCodes.Ret);
-
             return (Func<int>)methode.CreateDelegate(typeof(Func<int>));
         }
     }

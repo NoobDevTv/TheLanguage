@@ -13,11 +13,14 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "(2 + 2 ) * ((1 + 3 ) * 4) * 2 - 1 + 1 ";
+            string input = "var alpha = 5; return alpha;";
 
 
 
             var tokenDefinitions = new List<TokenDefinition>() {
+
+                new TokenDefinition("CodeLineEnd",";"),
+                new TokenDefinition("Return", "ret"),
                 new TokenDefinition("Integer", "[0-9]+"),
                 new TokenDefinition("Space", " ", true),
                 new TokenDefinition("Minus", "[-]"),
