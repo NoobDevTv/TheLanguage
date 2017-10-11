@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Compiler.Scanning;
 using Compiler.Parsing;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Compiler
 {
@@ -17,22 +19,8 @@ namespace Compiler
 
 
 
-            var tokenDefinitions = new List<TokenDefinition>() {
-
-                new TokenDefinition("CodeLineEnd",";"),
-                new TokenDefinition("Return", "ret"),
-                new TokenDefinition("Integer", "[0-9]+"),
-                new TokenDefinition("Var","var"),
-                new TokenDefinition("Identifier","[a-zA-Z][a-zA-Z0-9]+"),
-                new TokenDefinition("AssignEquals","[=]"),
-                new TokenDefinition("Space", " ", true),
-                new TokenDefinition("Minus", "[-]"),
-                new TokenDefinition("Plus", "[+]"),
-                new TokenDefinition("Point", "[*]"),
-                new TokenDefinition("Divisor", "[/]"),
-                new TokenDefinition("BracketOpen", "[(]"),
-                new TokenDefinition("BracketClose", "[)]")
-            };
+            var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
+            
 
             Func<int> alpha = () => 5;
 

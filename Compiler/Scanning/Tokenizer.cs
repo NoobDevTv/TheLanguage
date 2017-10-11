@@ -8,9 +8,9 @@ namespace Compiler.Scanning
 {
     public class Tokenizer
     {
-        public List<TokenDefinition> Definitions { get;private set; }
+        public TokenDefinitionCollection Definitions { get;private set; }
 
-        public Tokenizer(List<TokenDefinition> definitions)
+        public Tokenizer(TokenDefinitionCollection definitions)
         {
             Definitions = definitions;
         }
