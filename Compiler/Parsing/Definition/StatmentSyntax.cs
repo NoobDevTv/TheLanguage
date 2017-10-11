@@ -34,13 +34,5 @@ namespace Compiler.Parsing.Definition
 
             return result;
         }
-
-        public override void Visit(Scope scope)
-        {
-            foreach (var statment in Statments)
-            {
-                statment.Visit(scope);
-            }
-        }
     }
 }

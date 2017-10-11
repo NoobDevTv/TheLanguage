@@ -34,14 +34,5 @@ namespace Compiler.Parsing.Definition
 
             return false;
         }
-
-        public override void Visit(Scope scope)
-        {
-            Console.WriteLine(Name);
-
-            var variable = scope.LocalVariables[Name];
-            scope.Generator.Emit(OpCodes.Ldloc,variable);
-
-        }
     }
 }

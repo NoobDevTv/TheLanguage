@@ -30,11 +30,5 @@ namespace Compiler.Parsing.Definition
 
             return false;
         }
-
-        public override void Visit(Scope scope)
-        {
-            Expression.Visit(scope);
-            scope.Generator.Emit(OpCodes.Ret);
-        }
     }
 }

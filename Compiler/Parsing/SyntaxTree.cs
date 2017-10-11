@@ -16,7 +16,10 @@ namespace Compiler.Parsing
         public Func<int> Visit()
         {
             Scope scope = new Scope();
-            Expression.Visit(scope);
+
+            CodeVisitor visitor = new CodeVisitor();
+
+            visitor.Visit(Expression, scope);
 
             return scope.GetMethode();
         }

@@ -35,11 +35,5 @@ namespace Compiler.Parsing.Definition
 
             return false;
         }
-
-        public override void Visit(Scope scope)
-        {
-            Console.WriteLine(Value);
-            scope.Generator.Emit(OpCodes.Ldc_I4, Value);
-        }
     }
 }

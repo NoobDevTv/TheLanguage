@@ -56,10 +56,5 @@ namespace Compiler.Parsing.Definition
 
             return false;
         }
-
-        public override void Visit(Scope scope)
-        {
-            Member.Visit(scope);
-        }
     }
 }

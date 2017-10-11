@@ -37,23 +37,5 @@ namespace Compiler.Parsing.Definition
 
             return result;
         }
-
-        public override void Visit(Scope scope)
-        {
-            Console.WriteLine(Name);
-
-            var variable = scope.Generator.DeclareLocal(typeof(int));
-            //variable.SetLocalSymInfo(Name);
-
-            scope.LocalVariables[Name] = variable;
-
-            if (Expression != null)
-            {
-                Expression.Visit(scope);
-                scope.Generator.Emit(OpCodes.Stloc, variable);
-
-                Console.WriteLine("Sto");
-            }
-        }
     }
 }

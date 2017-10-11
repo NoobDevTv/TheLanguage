@@ -21,8 +21,5 @@ namespace Compiler.Parsing
         public override string ToString() => Name;
                 
         public abstract bool TryParse(SyntaxStream stream, Scanner scanner);
-
-        public abstract void Visit(Scope scope);
-
     }
 }
