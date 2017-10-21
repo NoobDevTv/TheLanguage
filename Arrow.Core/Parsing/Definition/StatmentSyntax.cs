@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler.Visitors;
+using Arrow.Core.Visitors;
 
-namespace Compiler.Parsing.Definition
+namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(40)]
     public class StatmentSyntax : Syntax

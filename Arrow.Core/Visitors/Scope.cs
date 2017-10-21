@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Visitors
+namespace Arrow.Core.Visitors
 {
     public class Scope
     {

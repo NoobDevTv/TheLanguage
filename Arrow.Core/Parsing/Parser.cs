@@ -1,12 +1,12 @@
-﻿using Compiler.Parsing.Definition;
-using Compiler.Scanning;
+﻿using Arrow.Core.Parsing.Definition;
+using Arrow.Core.Scanning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Parsing
+namespace Arrow.Core.Parsing
 {
     public class Parser
     {

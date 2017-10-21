@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Scanning
+namespace Arrow.Core.Scanning
 {
     public class TokenDefinitionCollection : List<TokenDefinition>
     {

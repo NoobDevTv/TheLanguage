@@ -1,8 +1,8 @@
 ﻿using System;
-using Compiler.Parsing.Definition;
-using Compiler.Visitors;
+using Arrow.Core.Parsing.Definition;
+using Arrow.Core.Visitors;
 
-namespace Compiler.Parsing
+namespace Arrow.Core.Parsing
 {
     public class SyntaxTree
     {

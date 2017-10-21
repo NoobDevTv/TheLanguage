@@ -58,9 +58,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Compiler\Compiler.csproj">
-      <Project>{48ed32a1-1b97-4aaf-a50d-c4f6f4c49593}</Project>
-      <Name>Compiler</Name>
+    <ProjectReference Include="..\Arrow.Core\Arrow.Core.csproj">
+      <Project>{A5970600-F841-4E8F-ACBB-A71068584848}</Project>
+      <Name>Arrow.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

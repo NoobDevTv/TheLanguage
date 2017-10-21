@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Parsing
+namespace Arrow.Core.Parsing
 {
     interface IScanable
     {
