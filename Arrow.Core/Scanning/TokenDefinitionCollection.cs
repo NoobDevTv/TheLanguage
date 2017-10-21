@@ -15,7 +15,7 @@ namespace Arrow.Core.Scanning
         {
 
 
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Compiler.Json.TokenDefinitions.json"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Arrow.Core.Json.TokenDefinitions.json"))
             {
                 using (var textReader = new StreamReader(stream))
                 {
