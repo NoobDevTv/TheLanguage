@@ -50,7 +50,7 @@
   {
     "Name": "Space",
     "Expression": {
-      "Pattern": " ",
+      "Pattern": "[\\s]+",
       "Options": 0
     },
     "Skip": true
