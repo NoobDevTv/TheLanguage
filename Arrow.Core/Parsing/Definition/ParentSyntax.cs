@@ -14,25 +14,30 @@ namespace Arrow.Core.Parsing.Definition
         public Syntax Close { get; private set; }
         public Syntax Member { get; private set; }
 
+        protected string nameOpen;
+        protected string nameClose;
+
         public ParentSyntax() : base(nameof(ParentSyntax))
         {
+            nameOpen = "BracketOpen";
+            nameClose = "BracketClose";
         }
-        //(a*(b * b)) * (c + g) +2 
+
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
-            
-            if (stream[0].Name != "BracketOpen" ||
-                stream[stream.Count - 1].Name != "BracketClose")
+
+            if (stream[0].Name != nameOpen ||
+                stream[stream.Count - 1].Name != nameClose)
                 return false;
 
             int openCount = 1;
 
             for (int i = 1; i < stream.Count; i++)
             {
-                if (stream[i].Name == "BracketOpen")
+                if (stream[i].Name == nameOpen)
                     openCount++;
 
-                else if(stream[i].Name == "BracketClose")
+                else if (stream[i].Name == nameClose)
                 {
                     openCount--;
 
@@ -47,8 +52,8 @@ namespace Arrow.Core.Parsing.Definition
                         Open = stream[0];
                         Close = stream[i];
 
-                        Member = scanner.Scan(stream.Get(1, i -1));
-                        
+                        Member = scanner.Scan(stream.Get(1, i - 1));
+
                         return true;
                     }
                 }

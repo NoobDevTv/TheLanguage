@@ -34,5 +34,18 @@ namespace CompilerTests
             Assert.AreEqual(compiler.Run($"ret {Environment.NewLine}1 + 1;")(), 2);
             Assert.AreEqual(compiler.Run($"var {Environment.NewLine}a= 2;{Environment.NewLine}ret 1 + 1;")(), 2);
         }
+
+        [TestMethod]
+        public void MethodTest()
+        {
+            var compiler = new ArrowCompiler();
+            compiler.Run(@"
+                def Test : void
+	            {
+                }
+                "
+                )();
+            
+        }
     }
 }

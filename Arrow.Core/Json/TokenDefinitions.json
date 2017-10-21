@@ -8,9 +8,57 @@
     "Skip": false
   },
   {
+    "Name": "ScopeBegin",
+    "Expression": {
+      "Pattern": "{",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "ScopeEnd",
+    "Expression": {
+      "Pattern": "}",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
     "Name": "Return",
     "Expression": {
-      "Pattern": "ret",
+      "Pattern": "\b(ret)\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "TypeDeclaration",
+    "Expression": {
+      "Pattern": ":",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Void",
+    "Expression": {
+      "Pattern": "\b(void)\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "MethodDeclaration",
+    "Expression": {
+      "Pattern": "\b(def)\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Var",
+    "Expression": {
+      "Pattern": "\b(var)\b",
       "Options": 0
     },
     "Skip": false
@@ -24,17 +72,9 @@
     "Skip": false
   },
   {
-    "Name": "Var",
-    "Expression": {
-      "Pattern": "var",
-      "Options": 0
-    },
-    "Skip": false
-  },
-  {
     "Name": "Identifier",
     "Expression": {
-      "Pattern": "[a-zA-Z][a-zA-Z0-9]*",
+      "Pattern": "\b([a-zA-Z][a-zA-Z0-9]*)\b",
       "Options": 0
     },
     "Skip": false

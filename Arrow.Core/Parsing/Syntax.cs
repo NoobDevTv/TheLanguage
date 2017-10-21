@@ -11,7 +11,7 @@ namespace Arrow.Core.Parsing
     public abstract class Syntax : IScanable
     {
 
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         public Syntax(string name )
         {
