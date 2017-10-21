@@ -1,5 +1,5 @@
-﻿using Compiler.Scanning;
-using Compiler.Visitors;
+﻿using Arrow.Core.Scanning;
+using Arrow.Core.Visitors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Parsing.Definition
+namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(10)]
     public class OperationSyntax : Syntax

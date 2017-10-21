@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler.Scanning;
-using Compiler.Visitors;
+using Arrow.Core.Scanning;
+using Arrow.Core.Visitors;
 
-namespace Compiler.Parsing
+namespace Arrow.Core.Parsing
 {
     public abstract class Syntax : IScanable
     {

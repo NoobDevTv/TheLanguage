@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler.Parsing.Definition;
+using Arrow.Core.Parsing.Definition;
 using System.Reflection.Emit;
-using static Compiler.Parsing.Definition.OperationSyntax;
+using static Arrow.Core.Parsing.Definition.OperationSyntax;
 
-namespace Compiler.Visitors
+namespace Arrow.Core.Visitors
 {
     class CodeVisitor : Visitor
     {

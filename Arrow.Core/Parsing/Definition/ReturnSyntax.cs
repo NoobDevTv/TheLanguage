@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler.Visitors;
+using Arrow.Core.Visitors;
 using System.Reflection.Emit;
 
-namespace Compiler.Parsing.Definition
+namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(20)]
     public class ReturnSyntax : Syntax

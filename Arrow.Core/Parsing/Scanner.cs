@@ -1,4 +1,4 @@
-﻿using Compiler.Parsing.Definition;
+﻿using Arrow.Core.Parsing.Definition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Parsing
+namespace Arrow.Core.Parsing
 {
     public delegate bool SyntaxParseDelegate(SyntaxStream stream, Scanner scanner, out Syntax syntax);
     public class Scanner

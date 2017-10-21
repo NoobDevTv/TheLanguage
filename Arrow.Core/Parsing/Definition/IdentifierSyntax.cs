@@ -3,32 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler.Scanning;
-using Compiler.Visitors;
+using Arrow.Core.Visitors;
 using System.Reflection.Emit;
 
-namespace Compiler.Parsing.Definition
+namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(0)]
-    public class IntegerSyntax : Syntax
+    public class IdentifierSyntax : Syntax
     {
-        public int Value { get; private set; }
-
-        public IntegerSyntax()
-            : base(nameof(IntegerSyntax))
+        public IdentifierSyntax() : base(nameof(IdentifierSyntax))
         {
         }
 
+        public string Name { get; private set; }
+
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
+
             if (stream.Count != 1)
                 return false;
 
             if (stream[0] is TokenSyntax tokenSyntax)
             {
-                if (tokenSyntax.Name == "Integer")
+                if (tokenSyntax.Name == "Identifier")
                 {
-                    Value = int.Parse(tokenSyntax.Token.Value);
+                    Name =tokenSyntax.Token.Value;
                     return true;
                 }
             }

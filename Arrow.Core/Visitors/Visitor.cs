@@ -1,5 +1,5 @@
-﻿using Compiler.Parsing;
-using Compiler.Parsing.Definition;
+﻿using Arrow.Core.Parsing;
+using Arrow.Core.Parsing.Definition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Visitors
+namespace Arrow.Core.Visitors
 {
     internal abstract class Visitor
     {

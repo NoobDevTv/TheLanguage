@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Compiler.Scanning
+namespace Arrow.Core.Scanning
 {
     public class Token
     {
