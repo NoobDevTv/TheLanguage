@@ -31,5 +31,7 @@ namespace Arrow.Core.Scanning
         {
             Skip = skip;
         }
+
+        public override string ToString() => Name;
     }
 }

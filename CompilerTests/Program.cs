@@ -16,5 +16,15 @@ namespace CompilerTests
 
             Assert.AreEqual(result(), 17);
         }
+
+        [TestMethod]
+        public void WhiteSpaceTest()
+        {
+            var compiler = new ArrowCompiler();
+            Assert.AreEqual(compiler.Run(@"ret 1+1;")(), 2);
+            Assert.AreEqual(compiler.Run(@"ret 1 + 1;")(), 2);
+            Assert.AreEqual(compiler.Run(@" ret  1  +  1 ; ")(), 2);
+            Assert.AreEqual(compiler.Run(@"var a= 2;ret a+1;")(), 3);
+        }
     }
 }

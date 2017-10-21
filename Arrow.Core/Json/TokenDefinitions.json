@@ -34,7 +34,7 @@
   {
     "Name": "Identifier",
     "Expression": {
-      "Pattern": "[a-zA-Z][a-zA-Z0-9]+",
+      "Pattern": "[a-zA-Z][a-zA-Z0-9]*",
       "Options": 0
     },
     "Skip": false

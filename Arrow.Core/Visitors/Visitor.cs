@@ -21,7 +21,7 @@ namespace Arrow.Core.Visitors
         public virtual void Visit(Syntax syntax, Scope scope)
         {
             MethodInfo method;
-            if (!methods.TryGetValue(syntax.GetType(), out method ))
+            if (!methods.TryGetValue(syntax.GetType(), out method))
                 method = GetType().GetMethods().FirstOrDefault(v =>
                              v.GetParameters().FirstOrDefault(
                                   p => p.ParameterType == syntax.GetType()) != null);
