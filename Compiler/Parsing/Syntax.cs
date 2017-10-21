@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Compiler.Scanning;
+using Compiler.Visitors;
 
 namespace Compiler.Parsing
 {
-    public abstract class Syntax
+    public abstract class Syntax : IScanable
     {
 
         public string Name { get; set; }
@@ -17,11 +18,8 @@ namespace Compiler.Parsing
             Name = name;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-
-        public abstract bool Check(List<Token> tokens);
+        public override string ToString() => Name;
+                
+        public abstract bool TryParse(SyntaxStream stream, Scanner scanner);
     }
 }

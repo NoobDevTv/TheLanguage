@@ -1,0 +1,106 @@
+[
+  {
+    "Name": "CodeLineEnd",
+    "Expression": {
+      "Pattern": ";",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Return",
+    "Expression": {
+      "Pattern": "ret",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Integer",
+    "Expression": {
+      "Pattern": "[0-9]+",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Var",
+    "Expression": {
+      "Pattern": "var",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Identifier",
+    "Expression": {
+      "Pattern": "[a-zA-Z][a-zA-Z0-9]+",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "AssignEquals",
+    "Expression": {
+      "Pattern": "[=]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Space",
+    "Expression": {
+      "Pattern": " ",
+      "Options": 0
+    },
+    "Skip": true
+  },
+  {
+    "Name": "Minus",
+    "Expression": {
+      "Pattern": "[-]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Plus",
+    "Expression": {
+      "Pattern": "[+]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Point",
+    "Expression": {
+      "Pattern": "[*]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Divisor",
+    "Expression": {
+      "Pattern": "[/]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "BracketOpen",
+    "Expression": {
+      "Pattern": "[(]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "BracketClose",
+    "Expression": {
+      "Pattern": "[)]",
+      "Options": 0
+    },
+    "Skip": false
+  }
+]

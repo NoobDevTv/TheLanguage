@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Compiler.Scanning;
 using Compiler.Parsing;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Compiler
 {
@@ -13,22 +15,10 @@ namespace Compiler
     {
         static void Main(string[] args)
         {
-            string input = "1 + 2 + 3 - 2";
-            var tokenDefinitions = new List<TokenDefinition>() {
-                new TokenDefinition("Integer", "[0-9]+"),
-                new TokenDefinition("Space", " ", true),
-                new TokenDefinition("Minus", "[-]"),
-                new TokenDefinition("Plus", "[+]")
-            };
+            var compiler = new ArrowCompiler();
+            Console.WriteLine(compiler.Run(""));
 
-
-            var tokenizer = new Tokenizer(tokenDefinitions);
-
-            var tokenResult = tokenizer.Parse(input);
-
-            var parser = new Parser();
-
-            var synatxTree = parser.Parse(tokenResult);
+            Console.ReadLine();
         }
     }
 }

@@ -1,0 +1,1 @@
+var alpha = 5 ; var beta = 6 ; ret alpha + 2 * beta ;

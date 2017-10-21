@@ -9,12 +9,19 @@ namespace Compiler.Scanning
 {
     public class TokenDefinition
     {
-        public string Name { get; private set; }
-        public Regex Expression { get; private set; }
+        public string Name { get; set; }
+        public Regex Expression { get; set; }
 
-        public bool Skip { get; private set; }
+        public int Order { get; set; }
 
-        public TokenDefinition(string name, string pattern)
+        public bool Skip { get; set; }
+
+        private TokenDefinition()
+        {
+            Order = 0; //TODO;
+        }
+
+        public TokenDefinition(string name, string pattern) : this()
         {
             Name = name;
             Expression = new Regex(pattern);
