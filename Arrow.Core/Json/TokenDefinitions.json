@@ -26,7 +26,7 @@
   {
     "Name": "Return",
     "Expression": {
-      "Pattern": "\b(ret)\b",
+      "Pattern": "(ret)\b",
       "Options": 0
     },
     "Skip": false
@@ -42,7 +42,7 @@
   {
     "Name": "Void",
     "Expression": {
-      "Pattern": "\b(void)\b",
+      "Pattern": "(void)\b",
       "Options": 0
     },
     "Skip": false
@@ -50,7 +50,7 @@
   {
     "Name": "MethodDeclaration",
     "Expression": {
-      "Pattern": "\b(def)\b",
+      "Pattern": "(def)\b",
       "Options": 0
     },
     "Skip": false
@@ -58,7 +58,7 @@
   {
     "Name": "Var",
     "Expression": {
-      "Pattern": "\b(var)\b",
+      "Pattern": "(var)\b",
       "Options": 0
     },
     "Skip": false
@@ -74,7 +74,7 @@
   {
     "Name": "Identifier",
     "Expression": {
-      "Pattern": "\b([a-zA-Z][a-zA-Z0-9]*)\b",
+      "Pattern": "([a-zA-Z][a-zA-Z0-9]*)\b",
       "Options": 0
     },
     "Skip": false
