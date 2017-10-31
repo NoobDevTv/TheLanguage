@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
+    [Syntax(SyntaxDefinitionType.MethodDeclaration)]
     class MethodDeclarationSyntax : Syntax
     {
         public IdentifierSyntax Identifier { get; private set; }

@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(20)]
+    [Syntax(SyntaxDefinitionType.Return)]
     public class ReturnSyntax : Syntax
     {
         public Syntax Expression { get; private set; }

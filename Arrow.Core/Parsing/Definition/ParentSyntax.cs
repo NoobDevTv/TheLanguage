@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(30)]
+    [Syntax(SyntaxDefinitionType.Parent)]
     public class ParentSyntax : Syntax
     {
         public Syntax Open { get; private set; }

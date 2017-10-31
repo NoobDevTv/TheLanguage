@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(30)]
+    [Syntax(SyntaxDefinitionType.Variable)]
     public class VariableDeclerationSyntax : Syntax
     {
         public VariableDeclerationSyntax() : base(nameof(VariableDeclerationSyntax))

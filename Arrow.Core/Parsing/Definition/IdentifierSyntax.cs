@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(0)]
+    [Syntax(SyntaxDefinitionType.Identifier)]
     public class IdentifierSyntax : Syntax
     {        
         public IdentifierSyntax() : base(nameof(IdentifierSyntax))

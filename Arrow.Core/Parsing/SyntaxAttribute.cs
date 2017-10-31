@@ -15,5 +15,9 @@ namespace Arrow.Core.Parsing
         {
             Order = order;
         }
+        public SyntaxAttribute(SyntaxDefinitionType syntaxDefinition)
+        {
+            Order = (int)syntaxDefinition;
+        }
     }
 }

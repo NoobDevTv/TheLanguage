@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
+    [Syntax(SyntaxDefinitionType.Scope)]
     class ScopeSyntax : ParentSyntax
     {
         public ScopeSyntax() : base()
