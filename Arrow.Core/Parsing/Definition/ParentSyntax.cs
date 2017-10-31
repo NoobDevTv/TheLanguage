@@ -14,6 +14,8 @@ namespace Arrow.Core.Parsing.Definition
         public Syntax Close { get; private set; }
         public Syntax Member { get; private set; }
 
+        public bool AllowEmpty { get; protected set; }
+
         protected string nameOpen;
         protected string nameClose;
 
@@ -52,7 +54,17 @@ namespace Arrow.Core.Parsing.Definition
                         Open = stream[0];
                         Close = stream[i];
 
-                        Member = scanner.Scan(stream.Get(1, i - 1));
+                        if (i -1 == 0)
+                        {
+                            if (!AllowEmpty)
+                                throw new Exception("Empty Member");
+                        }
+                        else
+                        {
+                            Member = scanner.Scan(stream.Get(1, i - 1));
+                        }
+
+                        
 
                         return true;
                     }

@@ -16,18 +16,23 @@ namespace Arrow.Core.Visitors
 
         public  DynamicMethod Methode { get; protected set; }
 
-        public Scope()
+        public Scope(string name,Type returnType)
         {
-            Methode = new DynamicMethod("Test", typeof(int), null);
+            Methode = new DynamicMethod(name, returnType, null);
             Generator = Methode.GetILGenerator();
 
             LocalVariables = new Dictionary<string, LocalBuilder>();
 
         }
 
-        public Func<int> GetMethode()
+        public Func<T> GetMethode<T>()
         {
-            return (Func<int>)Methode.CreateDelegate(typeof(Func<int>));
+            return (Func<T>)Methode.CreateDelegate(typeof(Func<T>));
+        }
+
+        public Action GetMethode()
+        {
+            return (Action)Methode.CreateDelegate(typeof(Action));
         }
     }
 }

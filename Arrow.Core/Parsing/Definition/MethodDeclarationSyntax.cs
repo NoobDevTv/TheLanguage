@@ -11,6 +11,8 @@ namespace Arrow.Core.Parsing.Definition
     {
         public IdentifierSyntax Identifier { get; private set; }
         public TypeDeclarationSyntax DeclarationSyntax { get; private set; }
+        public ScopeSyntax Body { get; private set; }
+        public ParentSyntax Signature { get; private set; }
 
         public MethodDeclarationSyntax() : base(nameof(MethodDeclarationSyntax))
         {
@@ -26,9 +28,12 @@ namespace Arrow.Core.Parsing.Definition
             if (stream[0].Name == "MethodDeclaration" && stream[1].Name == "Identifier")
             {
                 Identifier = (IdentifierSyntax)scanner.Scan(stream.Get(1, 1));
+                //Parent?
+                DeclarationSyntax = (TypeDeclarationSyntax)scanner.Scan(stream.Get(2, 2));
+                Body = (ScopeSyntax)scanner.Scan(stream.Skip(4));
                 result = true;
             }
-            
+
 
             return result;
         }

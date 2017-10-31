@@ -12,7 +12,7 @@ namespace CompilerTests
         public void MainParsingTest()
         {
             var compiler = new ArrowCompiler();
-            var result = compiler.Run(File.ReadAllText(@".\Test.arrow"));
+            var result = compiler.RunFunc<int>(File.ReadAllText(@".\Test.arrow"));
 
             Assert.AreEqual(result(), 17);
         }
@@ -21,31 +21,48 @@ namespace CompilerTests
         public void WhiteSpaceTest()
         {
             var compiler = new ArrowCompiler();
-            Assert.AreEqual(compiler.Run(@"ret 1+1;")(), 2);
-            Assert.AreEqual(compiler.Run(@"ret 1 + 1;")(), 2);
-            Assert.AreEqual(compiler.Run(@" ret  1  +  1 ; ")(), 2);
-            Assert.AreEqual(compiler.Run(@"var a= 2;ret a+1;")(), 3);
+            Assert.AreEqual(compiler.RunFunc<int>(@"ret 1+1;")(), 2);
+            Assert.AreEqual(compiler.RunFunc<int>(@"ret 1 + 1;")(), 2);
+            Assert.AreEqual(compiler.RunFunc<int>(@" ret  1  +  1 ; ")(), 2);
+            Assert.AreEqual(compiler.RunFunc<int>(@"var a= 2;ret a+1;")(), 3);
         }
 
         [TestMethod]
         public void NewLineTest()
         {
             var compiler = new ArrowCompiler();
-            Assert.AreEqual(compiler.Run($"ret {Environment.NewLine}1 + 1;")(), 2);
-            Assert.AreEqual(compiler.Run($"var {Environment.NewLine}a= 2;{Environment.NewLine}ret 1 + 1;")(), 2);
+            Assert.AreEqual(compiler.RunFunc<int>($"ret {Environment.NewLine}1 + 1;")(), 2);
+            Assert.AreEqual(compiler.RunFunc<int>($"var {Environment.NewLine}a= 2;{Environment.NewLine}ret 1 + 1;")(), 2);
         }
 
         [TestMethod]
         public void MethodTest()
         {
             var compiler = new ArrowCompiler();
-            compiler.Run(@"
+            compiler.RunVoid(@"
                 def Test : void
 	            {
                 }
                 "
                 )();
-            
+            //compiler.Run(@"
+            //    def Test
+	           // {
+            //    }
+            //    "
+            //   )();
+            //compiler.Run(@"
+            //    def Test() : int
+	           // {
+            //    }
+            //    "
+            //   )();
+            //compiler.Run(@"
+            //    def Test(a : int, b : int) : int
+	           // {
+            //    }
+            //    "
+            //   )();
         }
     }
 }

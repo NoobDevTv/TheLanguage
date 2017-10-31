@@ -15,7 +15,7 @@ namespace Compiler
         static void Main(string[] args)
         {
             var compiler = new ArrowCompiler();
-            Console.WriteLine(compiler.Run(""));
+            Console.WriteLine(compiler.RunVoid(""));
 
             Console.ReadLine();
         }

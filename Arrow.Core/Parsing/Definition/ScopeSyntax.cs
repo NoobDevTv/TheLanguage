@@ -12,6 +12,7 @@ namespace Arrow.Core.Parsing.Definition
         public ScopeSyntax() : base()
         {
             Name = nameof(ScopeSyntax);
+            AllowEmpty = true;
             nameClose = "ScopeEnd";
             nameOpen = "ScopeBegin";
         }
