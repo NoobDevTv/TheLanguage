@@ -29,7 +29,7 @@ namespace Arrow.Core.Parsing
                     return tmpObject;
             }
             
-            throw new Exception("No valid Expression found");
+            throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
         }
 
         internal void Collect()
