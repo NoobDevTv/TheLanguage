@@ -11,11 +11,11 @@ namespace Arrow.Core.Parsing
         Identifier,
         Integer,
         Operation,
-        Scope,
         Parent,
         Variable,
         Return,
         Statement,
+        Scope,
         Void,
         TypeDeclaration,
         MethodDeclaration
