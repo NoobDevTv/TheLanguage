@@ -9,9 +9,9 @@ using static Arrow.Core.Parsing.Definition.OperationSyntax;
 
 namespace Arrow.Core.Visitors
 {
-    class CodeVisitor : Visitor
+    class CodeVisitor : Visitor<CodeScope>
     {
-        public override void Visit(IdentifierSyntax syntax, Scope scope)
+        public void Visit(IdentifierSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Name);
 
@@ -19,13 +19,13 @@ namespace Arrow.Core.Visitors
             scope.Generator.Emit(OpCodes.Ldloc, variable);
         }
 
-        public override void Visit(IntegerSyntax syntax, Scope scope)
+        public void Visit(IntegerSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Value);
             scope.Generator.Emit(OpCodes.Ldc_I4, syntax.Value);
         }
 
-        public override void Visit(OperationSyntax syntax, Scope scope)
+        public void Visit(OperationSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Left,scope);
             Visit(syntax.Right,scope);
@@ -56,18 +56,18 @@ namespace Arrow.Core.Visitors
             Console.WriteLine(syntax.Operation);
         }
 
-        public override void Visit(ParentSyntax syntax, Scope scope)
+        public void Visit(ParentSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Member,scope);
         }
 
-        public override void Visit(ReturnSyntax syntax, Scope scope)
+        public void Visit(ReturnSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Expression, scope);
             scope.Generator.Emit(OpCodes.Ret);
         }
 
-        public override void Visit(StatmentSyntax syntax, Scope scope)
+        public void Visit(StatmentSyntax syntax, CodeScope scope)
         {
             foreach (var statment in syntax.Statments)
             {
@@ -75,12 +75,12 @@ namespace Arrow.Core.Visitors
             }
         }
 
-        public override void Visit(TokenSyntax syntax, Scope scope)
+        public void Visit(TokenSyntax syntax, CodeScope scope)
         {
             throw new NotImplementedException();
         }
 
-        public override void Visit(VariableDeclerationSyntax syntax, Scope scope)
+        public void Visit(VariableDeclerationSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Name);
 
@@ -96,6 +96,17 @@ namespace Arrow.Core.Visitors
 
                 Console.WriteLine("Sto");
             }
+        }
+
+        public void Visit(ScopeSyntax scopeSyntax, CodeScope scope)
+        {
+            if (scopeSyntax.Member == null)
+            {
+                scope.Generator.Emit(OpCodes.Nop);
+                return;
+            }
+
+            Visit(scopeSyntax.Member, scope);
         }
     }
 }

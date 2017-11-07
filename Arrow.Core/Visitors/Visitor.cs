@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Visitors
 {
-    internal abstract class Visitor
+    internal abstract class Visitor<C>
+        where C : Scope
     {
         private Dictionary<Type, MethodInfo> methods;
 
@@ -18,7 +19,7 @@ namespace Arrow.Core.Visitors
             methods = new Dictionary<Type, MethodInfo>();
         }
 
-        public virtual void Visit(Syntax syntax, Scope scope)
+        public virtual void Visit(Syntax syntax, C scope)
         {
             MethodInfo method;
             if (!methods.TryGetValue(syntax.GetType(), out method))
@@ -28,21 +29,5 @@ namespace Arrow.Core.Visitors
 
             method.Invoke(this, new object[] { syntax, scope });
         }
-
-        public abstract void Visit(IdentifierSyntax syntax, Scope scope);
-
-        public abstract void Visit(IntegerSyntax syntax, Scope scope);
-
-        public abstract void Visit(OperationSyntax syntax, Scope scope);
-
-        public abstract void Visit(ParentSyntax syntax, Scope scope);
-
-        public abstract void Visit(ReturnSyntax syntax, Scope scope);
-
-        public abstract void Visit(StatmentSyntax syntax, Scope scope);
-
-        public abstract void Visit(TokenSyntax syntax, Scope scope);
-
-        public abstract void Visit(VariableDeclerationSyntax syntax, Scope scope);
     }
 }

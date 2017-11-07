@@ -70,7 +70,11 @@
     <Compile Include="Scanning\TokenDefinition.cs" />
     <Compile Include="Scanning\TokenDefinitionCollection.cs" />
     <Compile Include="Scanning\Tokenizer.cs" />
+    <Compile Include="Visitors\ClassScope.cs" />
+    <Compile Include="Visitors\ClassVisitor.cs" />
     <Compile Include="Visitors\CodeVisitor.cs" />
+    <Compile Include="Visitors\MethodeScope.cs" />
+    <Compile Include="Visitors\CodeScope.cs" />
     <Compile Include="Visitors\Scope.cs" />
     <Compile Include="Visitors\Visitor.cs" />
   </ItemGroup>

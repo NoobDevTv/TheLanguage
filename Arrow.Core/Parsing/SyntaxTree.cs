@@ -15,7 +15,7 @@ namespace Arrow.Core.Parsing
 
         public Func<T> Visit<T>()
         {
-            Scope scope = new Scope("Test",typeof(T));
+            CodeScope scope = new CodeScope("Test",typeof(T));
 
             CodeVisitor visitor = new CodeVisitor();
 
@@ -26,7 +26,7 @@ namespace Arrow.Core.Parsing
 
         public Action Visit()
         {
-            Scope scope = new Scope("Test",null);
+            CodeScope scope = new CodeScope("Test",null);
 
             CodeVisitor visitor = new CodeVisitor();
 
