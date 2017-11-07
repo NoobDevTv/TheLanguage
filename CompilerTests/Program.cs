@@ -39,12 +39,12 @@ namespace CompilerTests
         public void MethodTest()
         {
             var compiler = new ArrowCompiler();
-            compiler.RunVoid(@"
+            var assembly = compiler.GetAssembly(@"
                 def Test : void
 	            {
                 }
                 "
-                )();
+                );
             //compiler.Run(@"
             //    def Test
 	           // {
@@ -63,6 +63,7 @@ namespace CompilerTests
             //    }
             //    "
             //   )();
+            
         }
     }
 }
