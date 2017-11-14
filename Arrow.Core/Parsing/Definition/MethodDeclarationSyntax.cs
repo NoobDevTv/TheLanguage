@@ -36,6 +36,7 @@ namespace Arrow.Core.Parsing.Definition
                 }
                 else if(scanner.TryScan(stream.Skip(2), out ScopeSyntax scopeSyntax))
                 {
+                    DeclarationSyntax = new TypeDeclarationSyntax(new VoidSyntax());
                     Body = scopeSyntax;
                 }
                 else

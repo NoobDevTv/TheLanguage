@@ -13,7 +13,7 @@ namespace Arrow.Core.Visitors
         {
             MethodeScope methodeScope = new MethodeScope()
             {
-                ReturnType = null,
+                ReturnType = syntax.DeclarationSyntax.TypeSyntax.Type,
                 Name = syntax.Identifier.Name,
             };
 

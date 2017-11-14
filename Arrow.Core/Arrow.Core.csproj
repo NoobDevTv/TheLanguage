@@ -52,6 +52,7 @@
     <Compile Include="Parsing\Definition\ReturnSyntax.cs" />
     <Compile Include="Parsing\Definition\ScopeSyntax.cs" />
     <Compile Include="Parsing\Definition\StatmentSyntax.cs" />
+    <Compile Include="Parsing\Definition\TypeSyntax.cs" />
     <Compile Include="Parsing\SyntaxDefinitionType.cs" />
     <Compile Include="Parsing\Definition\TokenSyntax.cs" />
     <Compile Include="Parsing\Definition\TypeDeclarationSyntax.cs" />

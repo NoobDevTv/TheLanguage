@@ -10,12 +10,17 @@ namespace Arrow.Core.Parsing.Definition
     [Syntax(SyntaxDefinitionType.TypeDeclaration)]
     class TypeDeclarationSyntax : Syntax
     {
-        public Syntax Expression { get; private set; }
+        public TypeSyntax TypeSyntax { get; private set; }
 
         public TypeDeclarationSyntax() : base(nameof(TypeDeclarationSyntax))
         {
         }
 
+        public TypeDeclarationSyntax(TypeSyntax typeSyntax)
+            : this()
+        {
+            TypeSyntax = typeSyntax;
+        }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
@@ -24,8 +29,8 @@ namespace Arrow.Core.Parsing.Definition
 
             if (stream[0].Name == "TypeDeclaration")
             {
-                Expression = scanner.Scan(stream.Skip(1));
-                return Expression is VoidSyntax;
+                TypeSyntax = scanner.Scan(stream.Skip(1)) as TypeSyntax;
+                return TypeSyntax != null;
             }
 
             return false;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(SyntaxDefinitionType.Void)]
-    public class VoidSyntax : Syntax
+    public class VoidSyntax : TypeSyntax
     {
         public VoidSyntax() : base(nameof(VoidSyntax))
         {
