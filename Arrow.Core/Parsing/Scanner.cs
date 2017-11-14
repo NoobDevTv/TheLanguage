@@ -19,26 +19,44 @@ namespace Arrow.Core.Parsing
 
             Collect();
         }
-        
-        internal Syntax Scan(SyntaxStream syntaxStream)
+
+
+        internal bool TryScan(SyntaxStream syntaxStream, out Syntax scanResult)
         {
+            scanResult = null;
+
             foreach (var syntax in SyntaxDictionary)
             {
-                var tmpObject = (Syntax)Activator.CreateInstance(syntax.Value);
-                if (tmpObject.TryParse(syntaxStream, this))
-                    return tmpObject;
+                scanResult = (Syntax)Activator.CreateInstance(syntax.Value);
+                if (scanResult.TryParse(syntaxStream, this))
+                    return true;
             }
-            
+
+            return false;
+        }
+        internal bool TryScan<T>(SyntaxStream syntaxStream, out T scanResult)
+            where T : Syntax, new()
+        {
+            scanResult = new T();
+            return scanResult.TryParse(syntaxStream, this);                
+        }
+
+        internal Syntax Scan(SyntaxStream syntaxStream)
+        {
+            if (TryScan(syntaxStream, out var syntax))
+                return syntax;
+
             throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
         }
+
 
         internal void Collect()
         {
             //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetCustomAttributes<SyntaxAttribute>() != null);
 
-            
+
             var ass = Assembly.GetExecutingAssembly();
-            
+
             var types = from type in ass.GetTypes()
                         let attribute = type.GetCustomAttribute<SyntaxAttribute>()
                         where attribute != null

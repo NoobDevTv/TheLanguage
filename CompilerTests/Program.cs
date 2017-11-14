@@ -45,34 +45,34 @@ namespace CompilerTests
                 }
                 "
                 );
-           assembly = compiler.GetAssembly(@"
+            assembly = compiler.GetAssembly(@"
                 def Test : void
 	            {
                     var a = 1 + 1;
                 }
                 "
+                );
+
+            compiler.GetAssembly(@"
+                def Test
+                {
+                }
+                "
                );
 
-            //compiler.Run(@"
-            //    def Test
-            // {
-            //    }
-            //    "
-            //   )();
-
-            //compiler.Run(@"
+            //compiler.GetAssembly(@"
             //    def Test() : int
             // {
             //    }
             //    "
-            //   )();
+            //   );
 
-            //compiler.Run(@"
+            //compiler.GetAssembly(@"
             //    def Test(a : int, b : int) : int
             // {
             //    }
             //    "
-            //   )();
+            //   );
 
         }
     }

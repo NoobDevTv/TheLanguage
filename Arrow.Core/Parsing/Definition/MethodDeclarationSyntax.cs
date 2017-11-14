@@ -29,8 +29,21 @@ namespace Arrow.Core.Parsing.Definition
             {
                 Identifier = (IdentifierSyntax)scanner.Scan(stream.Get(1, 1));
                 //Parent?
-                DeclarationSyntax = (TypeDeclarationSyntax)scanner.Scan(stream.Get(2, 2));
-                Body = (ScopeSyntax)scanner.Scan(stream.Skip(4));
+                if(scanner.TryScan(stream.Get(2, 2), out TypeDeclarationSyntax typeDeclarationSyntax))
+                {
+                    DeclarationSyntax = typeDeclarationSyntax;
+                    Body = (ScopeSyntax)scanner.Scan(stream.Skip(4));
+                }
+                else if(scanner.TryScan(stream.Skip(2), out ScopeSyntax scopeSyntax))
+                {
+                    Body = scopeSyntax;
+                }
+                else
+                {
+                    return false;
+                }
+                
+                
                 result = true;
             }
 
