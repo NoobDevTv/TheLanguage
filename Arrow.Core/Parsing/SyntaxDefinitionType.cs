@@ -16,7 +16,7 @@ namespace Arrow.Core.Parsing
         Return,
         Statement,
         Scope,
-        Void,
+        Primitive,
         TypeDeclaration,
         MethodDeclaration
     }

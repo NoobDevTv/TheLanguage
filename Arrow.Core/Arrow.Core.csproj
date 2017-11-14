@@ -49,6 +49,7 @@
     <Compile Include="Parsing\Definition\MethodDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />
     <Compile Include="Parsing\Definition\ParentSyntax.cs" />
+    <Compile Include="Parsing\Definition\PrimitiveSyntax.cs" />
     <Compile Include="Parsing\Definition\ReturnSyntax.cs" />
     <Compile Include="Parsing\Definition\ScopeSyntax.cs" />
     <Compile Include="Parsing\Definition\StatmentSyntax.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="Parsing\Definition\TokenSyntax.cs" />
     <Compile Include="Parsing\Definition\TypeDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\VariableDeclerationSyntax.cs" />
-    <Compile Include="Parsing\Definition\VoidSyntax.cs" />
     <Compile Include="Parsing\IScanable.cs" />
     <Compile Include="Parsing\Parser.cs" />
     <Compile Include="Parsing\RawKind.cs" />

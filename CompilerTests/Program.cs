@@ -60,12 +60,19 @@ namespace CompilerTests
                 "
                );
 
-            //compiler.GetAssembly(@"
-            //    def Test() : int
-            // {
-            //    }
-            //    "
-            //   );
+            compiler.GetAssembly(@"
+                def Test : int
+                {
+                }
+                "
+               );
+
+            compiler.GetAssembly(@"
+                def Test() : int
+                {
+                }
+                "
+               );
 
             //compiler.GetAssembly(@"
             //    def Test(a : int, b : int) : int

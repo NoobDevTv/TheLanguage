@@ -18,7 +18,7 @@ namespace Arrow.Core.Visitors
             };
 
             var methodeBuilder = scope.TypeBuilder.DefineMethod(methodeScope.Name, 
-                System.Reflection.MethodAttributes.Public, null, null);
+                System.Reflection.MethodAttributes.Public, methodeScope.ReturnType, null);
 
             methodeScope.BodyScope = new CodeScope(methodeBuilder.GetILGenerator());
 
