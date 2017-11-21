@@ -8,6 +8,14 @@
     "Skip": false
   },
   {
+    "Name": "Comma",
+    "Expression": {
+      "Pattern": ",",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
     "Name": "ScopeBegin",
     "Expression": {
       "Pattern": "{",

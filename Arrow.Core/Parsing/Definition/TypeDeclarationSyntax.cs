@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(SyntaxDefinitionType.TypeDeclaration)]
-    class TypeDeclarationSyntax : Syntax
+    public class TypeDeclarationSyntax : Syntax
     {
         public TypeSyntax TypeSyntax { get; private set; }
 

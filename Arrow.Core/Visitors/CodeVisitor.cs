@@ -15,8 +15,20 @@ namespace Arrow.Core.Visitors
         {
             Console.WriteLine(syntax.Name);
 
-            var variable = scope.LocalVariables[syntax.Name];
-            scope.Generator.Emit(OpCodes.Ldloc, variable);
+            if (scope.LocalVariables.TryGetValue(syntax.Name,out var variable))
+            {
+                scope.Generator.Emit(OpCodes.Ldloc, variable);
+            }
+            else if (scope.PrameterVariables.TryGetValue(syntax.Name, out var parameter))
+            {
+                scope.Generator.Emit(OpCodes.Ldarg,parameter.Position);
+            }
+            else
+            {
+                throw new Exception("No Variable found");
+            }
+
+            
         }
 
         public void Visit(IntegerSyntax syntax, CodeScope scope)
@@ -80,7 +92,7 @@ namespace Arrow.Core.Visitors
             throw new NotImplementedException();
         }
 
-        public void Visit(VariableDeclerationSyntax syntax, CodeScope scope)
+        public void Visit(VariableDeclarationSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Name);
 

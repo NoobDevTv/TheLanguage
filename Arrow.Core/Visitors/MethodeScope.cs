@@ -12,6 +12,8 @@ namespace Arrow.Core.Visitors
 
         public Type ReturnType { get; set; }
 
+        public Type[] ParameterTypes { get; set; }
+
         public CodeScope BodyScope { get; set; }
     }
 }

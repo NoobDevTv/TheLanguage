@@ -12,7 +12,7 @@ namespace Arrow.Core.Parsing.Definition
         public IdentifierSyntax Identifier { get; private set; }
         public TypeDeclarationSyntax DeclarationSyntax { get; private set; }
         public ScopeSyntax Body { get; private set; }
-        public ParentSyntax Signature { get; private set; }
+        public ParameterListSyntax Signature { get; private set; }
 
         public MethodDeclarationSyntax() : base(nameof(MethodDeclarationSyntax))
         {
@@ -28,13 +28,21 @@ namespace Arrow.Core.Parsing.Definition
             if (stream[0].Name == "MethodDeclaration" && stream[1].Name == "Identifier")
             {
                 Identifier = (IdentifierSyntax)scanner.Scan(stream.Get(1, 1));
-                //Parent?
-                if(scanner.TryScan(stream.Get(2, 2), out TypeDeclarationSyntax typeDeclarationSyntax))
+
+                int index = 2;
+
+                if (scanner.TryScan(stream.Skip(index), out ParameterListSyntax parentSyntax))
+                {
+                    Signature = parentSyntax;
+                    index += parentSyntax.Length;
+                }
+
+                if (scanner.TryScan(stream.Get(index, 2), out TypeDeclarationSyntax typeDeclarationSyntax))
                 {
                     DeclarationSyntax = typeDeclarationSyntax;
-                    Body = (ScopeSyntax)scanner.Scan(stream.Skip(4));
+                    Body = (ScopeSyntax)scanner.Scan(stream.Skip(index + 2));
                 }
-                else if(scanner.TryScan(stream.Skip(2), out ScopeSyntax scopeSyntax))
+                else if (scanner.TryScan(stream.Skip(index), out ScopeSyntax scopeSyntax))
                 {
                     DeclarationSyntax = new TypeDeclarationSyntax(new PrimitiveSyntax());
                     Body = scopeSyntax;
@@ -43,8 +51,8 @@ namespace Arrow.Core.Parsing.Definition
                 {
                     return false;
                 }
-                
-                
+
+
                 result = true;
             }
 

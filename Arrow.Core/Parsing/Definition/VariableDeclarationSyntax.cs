@@ -9,13 +9,12 @@ using System.Reflection.Emit;
 namespace Arrow.Core.Parsing.Definition
 {
     [Syntax(SyntaxDefinitionType.Variable)]
-    public class VariableDeclerationSyntax : Syntax
+    public class VariableDeclarationSyntax : Syntax
     {
-        public VariableDeclerationSyntax() : base(nameof(VariableDeclerationSyntax))
+        public VariableDeclarationSyntax() : base(nameof(VariableDeclarationSyntax))
         {
         }
-
-        public string Name { get; private set; }
+        
         public Syntax Expression { get; private set; }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)

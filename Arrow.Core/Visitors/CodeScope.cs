@@ -11,6 +11,7 @@ namespace Arrow.Core.Visitors
     {
 
         public Dictionary<string,LocalBuilder> LocalVariables { get; }
+        public Dictionary<string, ParameterBuilder> PrameterVariables { get; }
 
         public ILGenerator Generator { get; }
 
@@ -22,6 +23,7 @@ namespace Arrow.Core.Visitors
             Generator = Methode.GetILGenerator();
 
             LocalVariables = new Dictionary<string, LocalBuilder>();
+            PrameterVariables = new Dictionary<string, ParameterBuilder>();
 
         }
 

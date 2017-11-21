@@ -41,13 +41,13 @@ namespace CompilerTests
             var compiler = new ArrowCompiler();
             var assembly = compiler.GetAssembly(@"
                 def Test : void
-	            {
+             {
                 }
                 "
                 );
             assembly = compiler.GetAssembly(@"
                 def Test : void
-	            {
+             {
                     var a = 1 + 1;
                 }
                 "
@@ -74,12 +74,13 @@ namespace CompilerTests
                 "
                );
 
-            //compiler.GetAssembly(@"
-            //    def Test(a : int, b : int) : int
-            // {
-            //    }
-            //    "
-            //   );
+            compiler.GetAssembly(@"
+                def Test(a : int, b : int) : int
+                {
+                    return a + b;
+                }
+                "
+               );
 
         }
     }
