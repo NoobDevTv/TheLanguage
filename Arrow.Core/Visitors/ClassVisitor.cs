@@ -11,7 +11,7 @@ namespace Arrow.Core.Visitors
     {
         public void Visit(MethodDeclarationSyntax syntax, ClassScope scope)
         {
-            var parameterTypes = syntax.Signature.Parameters.Select(p => p.TypeDeclaration.TypeSyntax.Type).ToArray();
+            var parameterTypes = syntax.Signature?.Parameters.Select(p => p.TypeDeclaration.TypeSyntax.Type).ToArray();
 
             MethodeScope methodeScope = new MethodeScope()
             {
@@ -20,20 +20,24 @@ namespace Arrow.Core.Visitors
                 Name = syntax.Identifier.Name,
             };
 
-            var methodeBuilder = scope.TypeBuilder.DefineMethod(methodeScope.Name, 
+            var methodeBuilder = scope.TypeBuilder.DefineMethod(methodeScope.Name,
                 System.Reflection.MethodAttributes.Public, methodeScope.ReturnType, methodeScope.ParameterTypes);
 
-            methodeScope.BodyScope = new CodeScope(methodeBuilder.GetILGenerator());
+            methodeScope.BodyScope = new CodeScope(methodeScope, methodeBuilder.GetILGenerator());
 
-            
 
-            int i = 0;
-            foreach (var parameter in syntax.Signature.Parameters)
+
+            int i = 1;
+
+            if (syntax.Signature != null)
             {
-                var parameterBuilder = methodeBuilder.DefineParameter(
-                    i++, System.Reflection.ParameterAttributes.None, parameter.Name);
-                methodeScope.BodyScope.PrameterVariables.Add(parameter.Name, parameterBuilder);
-                
+                foreach (var parameter in syntax.Signature.Parameters)
+                {
+                    var parameterBuilder = methodeBuilder.DefineParameter(
+                        i++, System.Reflection.ParameterAttributes.None, parameter.Name);
+                    methodeScope.BodyScope.ParameterVariables.Add(parameter.Name, parameterBuilder);
+
+                }
             }
 
             CodeVisitor codeVisitor = new CodeVisitor();

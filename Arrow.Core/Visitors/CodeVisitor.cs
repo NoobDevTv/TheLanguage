@@ -19,9 +19,24 @@ namespace Arrow.Core.Visitors
             {
                 scope.Generator.Emit(OpCodes.Ldloc, variable);
             }
-            else if (scope.PrameterVariables.TryGetValue(syntax.Name, out var parameter))
+            else if (scope.ParameterVariables.TryGetValue(syntax.Name, out var parameter))
             {
-                scope.Generator.Emit(OpCodes.Ldarg,parameter.Position);
+                switch (parameter.Position)
+                {
+                    case 1:
+                        scope.Generator.Emit(OpCodes.Ldarg_1);
+                        break;
+                    case 2:
+                        scope.Generator.Emit(OpCodes.Ldarg_2);
+                        break;
+                    case 3:
+                        scope.Generator.Emit(OpCodes.Ldarg_3);
+                        break;
+                    default:
+                        scope.Generator.Emit(OpCodes.Ldarg_S, parameter.Position);
+                        break;
+                }
+                
             }
             else
             {
