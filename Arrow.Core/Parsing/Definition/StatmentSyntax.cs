@@ -7,7 +7,7 @@ using Arrow.Core.Visitors;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(40)]
+    [Syntax(SyntaxDefinitionType.Statement)]
     public class StatmentSyntax : Syntax
     {
         public List<Syntax> Statments { get; private set; }

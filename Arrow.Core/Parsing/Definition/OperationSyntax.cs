@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(10)]
+    [Syntax(SyntaxDefinitionType.Operation)]
     public class OperationSyntax : Syntax
     {
         public Syntax Left { get; private set; }
@@ -22,7 +22,6 @@ namespace Arrow.Core.Parsing.Definition
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
-
             if (stream.Count < 3)
                 return false;
 

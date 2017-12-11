@@ -13,9 +13,20 @@ namespace Arrow.Core.Parsing
             Expression = syntax;
         }
 
-        public Func<int> Visit()
+        public Func<T> Visit<T>()
         {
-            Scope scope = new Scope();
+            CodeScope scope = new CodeScope("Test",typeof(T));
+
+            CodeVisitor visitor = new CodeVisitor();
+
+            visitor.Visit(Expression, scope);
+
+            return scope.GetMethode<T>();
+        }
+
+        public Action Visit()
+        {
+            CodeScope scope = new CodeScope("Test",null);
 
             CodeVisitor visitor = new CodeVisitor();
 

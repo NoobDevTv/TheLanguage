@@ -8,9 +8,185 @@
     "Skip": false
   },
   {
+    "Name": "Comma",
+    "Expression": {
+      "Pattern": ",",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "ScopeBegin",
+    "Expression": {
+      "Pattern": "{",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "ScopeEnd",
+    "Expression": {
+      "Pattern": "}",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
     "Name": "Return",
     "Expression": {
-      "Pattern": "ret",
+      "Pattern": "\\b(ret)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "TypeDeclaration",
+    "Expression": {
+      "Pattern": ":",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Void",
+    "Expression": {
+      "Pattern": "\\b(void)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Int",
+    "Expression": {
+      "Pattern": "\\b(int)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Short",
+    "Expression": {
+      "Pattern": "\\b(short)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Long",
+    "Expression": {
+      "Pattern": "\\b(long)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Float",
+    "Expression": {
+      "Pattern": "\\b(float)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Decimal",
+    "Expression": {
+      "Pattern": "\\b(decimal)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Double",
+    "Expression": {
+      "Pattern": "\\b(double)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "String",
+    "Expression": {
+      "Pattern": "\\b(string)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Char",
+    "Expression": {
+      "Pattern": "\\b(char)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Bool",
+    "Expression": {
+      "Pattern": "\\b(bool)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Object",
+    "Expression": {
+      "Pattern": "\\b(object)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "UShort",
+    "Expression": {
+      "Pattern": "\\b(ushort)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "UInt",
+    "Expression": {
+      "Pattern": "\\b(uint)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "ULong",
+    "Expression": {
+      "Pattern": "\\b(ulong)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Byte",
+    "Expression": {
+      "Pattern": "\\b(byte)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "SByte",
+    "Expression": {
+      "Pattern": "\\b(sbyte)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "MethodDeclaration",
+    "Expression": {
+      "Pattern": "\\b(def)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "Var",
+    "Expression": {
+      "Pattern": "\\b(var)\\b",
       "Options": 0
     },
     "Skip": false
@@ -24,17 +200,9 @@
     "Skip": false
   },
   {
-    "Name": "Var",
-    "Expression": {
-      "Pattern": "var",
-      "Options": 0
-    },
-    "Skip": false
-  },
-  {
     "Name": "Identifier",
     "Expression": {
-      "Pattern": "[a-zA-Z][a-zA-Z0-9]*",
+      "Pattern": "\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
       "Options": 0
     },
     "Skip": false

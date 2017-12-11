@@ -46,12 +46,20 @@
     <Compile Include="ArrowCompiler.cs" />
     <Compile Include="Parsing\Definition\IdentifierSyntax.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
+    <Compile Include="Parsing\Definition\MethodDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />
+    <Compile Include="Parsing\Definition\ParameterListSyntax.cs" />
     <Compile Include="Parsing\Definition\ParentSyntax.cs" />
+    <Compile Include="Parsing\Definition\PrimitiveSyntax.cs" />
     <Compile Include="Parsing\Definition\ReturnSyntax.cs" />
+    <Compile Include="Parsing\Definition\ScopeSyntax.cs" />
     <Compile Include="Parsing\Definition\StatmentSyntax.cs" />
+    <Compile Include="Parsing\Definition\TypeSyntax.cs" />
+    <Compile Include="Parsing\Definition\ParameterDeclarationSyntax.cs" />
+    <Compile Include="Parsing\SyntaxDefinitionType.cs" />
     <Compile Include="Parsing\Definition\TokenSyntax.cs" />
-    <Compile Include="Parsing\Definition\VariableDeclerationSyntax.cs" />
+    <Compile Include="Parsing\Definition\TypeDeclarationSyntax.cs" />
+    <Compile Include="Parsing\Definition\VariableDeclarationSyntax.cs" />
     <Compile Include="Parsing\IScanable.cs" />
     <Compile Include="Parsing\Parser.cs" />
     <Compile Include="Parsing\RawKind.cs" />
@@ -65,7 +73,11 @@
     <Compile Include="Scanning\TokenDefinition.cs" />
     <Compile Include="Scanning\TokenDefinitionCollection.cs" />
     <Compile Include="Scanning\Tokenizer.cs" />
+    <Compile Include="Visitors\ClassScope.cs" />
+    <Compile Include="Visitors\ClassVisitor.cs" />
     <Compile Include="Visitors\CodeVisitor.cs" />
+    <Compile Include="Visitors\MethodeScope.cs" />
+    <Compile Include="Visitors\CodeScope.cs" />
     <Compile Include="Visitors\Scope.cs" />
     <Compile Include="Visitors\Visitor.cs" />
   </ItemGroup>

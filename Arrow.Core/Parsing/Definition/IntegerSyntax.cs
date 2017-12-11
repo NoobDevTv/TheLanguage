@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(0)]
+    [Syntax(SyntaxDefinitionType.Integer)]
     public class IntegerSyntax : Syntax
     {
         public int Value { get; private set; }

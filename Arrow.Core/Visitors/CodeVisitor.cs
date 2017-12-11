@@ -9,23 +9,50 @@ using static Arrow.Core.Parsing.Definition.OperationSyntax;
 
 namespace Arrow.Core.Visitors
 {
-    class CodeVisitor : Visitor
+    class CodeVisitor : Visitor<CodeScope>
     {
-        public override void Visit(IdentifierSyntax syntax, Scope scope)
+        public void Visit(IdentifierSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Name);
 
-            var variable = scope.LocalVariables[syntax.Name];
-            scope.Generator.Emit(OpCodes.Ldloc, variable);
+            if (scope.LocalVariables.TryGetValue(syntax.Name,out var variable))
+            {
+                scope.Generator.Emit(OpCodes.Ldloc, variable);
+            }
+            else if (scope.ParameterVariables.TryGetValue(syntax.Name, out var parameter))
+            {
+                switch (parameter.Position)
+                {
+                    case 1:
+                        scope.Generator.Emit(OpCodes.Ldarg_1);
+                        break;
+                    case 2:
+                        scope.Generator.Emit(OpCodes.Ldarg_2);
+                        break;
+                    case 3:
+                        scope.Generator.Emit(OpCodes.Ldarg_3);
+                        break;
+                    default:
+                        scope.Generator.Emit(OpCodes.Ldarg_S, parameter.Position);
+                        break;
+                }
+                
+            }
+            else
+            {
+                throw new Exception("No Variable found");
+            }
+
+            
         }
 
-        public override void Visit(IntegerSyntax syntax, Scope scope)
+        public void Visit(IntegerSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Value);
             scope.Generator.Emit(OpCodes.Ldc_I4, syntax.Value);
         }
 
-        public override void Visit(OperationSyntax syntax, Scope scope)
+        public void Visit(OperationSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Left,scope);
             Visit(syntax.Right,scope);
@@ -56,18 +83,18 @@ namespace Arrow.Core.Visitors
             Console.WriteLine(syntax.Operation);
         }
 
-        public override void Visit(ParentSyntax syntax, Scope scope)
+        public void Visit(ParentSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Member,scope);
         }
 
-        public override void Visit(ReturnSyntax syntax, Scope scope)
+        public void Visit(ReturnSyntax syntax, CodeScope scope)
         {
             Visit(syntax.Expression, scope);
             scope.Generator.Emit(OpCodes.Ret);
         }
 
-        public override void Visit(StatmentSyntax syntax, Scope scope)
+        public void Visit(StatmentSyntax syntax, CodeScope scope)
         {
             foreach (var statment in syntax.Statments)
             {
@@ -75,12 +102,12 @@ namespace Arrow.Core.Visitors
             }
         }
 
-        public override void Visit(TokenSyntax syntax, Scope scope)
+        public void Visit(TokenSyntax syntax, CodeScope scope)
         {
             throw new NotImplementedException();
         }
 
-        public override void Visit(VariableDeclerationSyntax syntax, Scope scope)
+        public void Visit(VariableDeclarationSyntax syntax, CodeScope scope)
         {
             Console.WriteLine(syntax.Name);
 
@@ -96,6 +123,17 @@ namespace Arrow.Core.Visitors
 
                 Console.WriteLine("Sto");
             }
+        }
+
+        public void Visit(ScopeSyntax scopeSyntax, CodeScope scope)
+        {
+            if (scopeSyntax.Member == null)
+            {
+                scope.Generator.Emit(OpCodes.Nop);
+                return;
+            }
+
+            Visit(scopeSyntax.Member, scope);
         }
     }
 }

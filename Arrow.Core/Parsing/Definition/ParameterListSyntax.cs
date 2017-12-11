@@ -7,29 +7,32 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(SyntaxDefinitionType.Parent)]
-    public class ParentSyntax : Syntax
+    public class ParameterListSyntax : Syntax
     {
         public Syntax Open { get; private set; }
         public Syntax Close { get; private set; }
-        public Syntax Member { get; private set; }
+
+        public List<ParameterDeclarationSyntax> Parameters { get; private set; }
+
+        public int Length { get; set; }
 
         public bool AllowEmpty { get; protected set; }
 
         protected string nameOpen;
         protected string nameClose;
 
-        public ParentSyntax() : base(nameof(ParentSyntax))
+        public ParameterListSyntax() : base(nameof(ParameterListSyntax))
         {
             nameOpen = "BracketOpen";
             nameClose = "BracketClose";
+            AllowEmpty = true;
+            Parameters = new List<ParameterDeclarationSyntax>();
         }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
 
-            if (stream[0].Name != nameOpen ||
-                stream[stream.Count - 1].Name != nameClose)
+            if (stream[0].Name != nameOpen)
                 return false;
 
             int openCount = 1;
@@ -43,35 +46,55 @@ namespace Arrow.Core.Parsing.Definition
                 {
                     openCount--;
 
-                    if (openCount == 0 && i != stream.Count - 1)
-                    {
-                        return false;
-                    }
-
-                    if (openCount == 0 &&
-                        i == stream.Count - 1)
+                    if (openCount == 0)
                     {
                         Open = stream[0];
                         Close = stream[i];
 
-                        if (i -1 == 0)
+                        if (i - 1 == 0)
                         {
                             if (!AllowEmpty)
                                 throw new Exception("Empty Member");
                         }
                         else
                         {
-                            Member = scanner.Scan(stream.Get(1, i - 1));
+                            SearchParameter(1, i, stream, scanner);
                         }
 
-                        
 
+                        Length = i + 1;
                         return true;
                     }
                 }
             }
 
             return false;
+        }
+
+        private void SearchParameter(int start, int end, SyntaxStream stream, Scanner scanner)
+        {
+            int index = start;
+            var tmpList = new List<ParameterDeclarationSyntax>();
+
+            for (int i = start; i <= end; i++)
+            {
+                var token = stream[i];
+                if (token.Name == "Comma" || i == end)
+                {
+                    if (scanner.TryScan(stream.Get(index, i - index), out ParameterDeclarationSyntax parameter))
+                    {
+                        tmpList.Add(parameter);
+                    }
+                    else
+                    {
+                        throw new Exception("Wrong Parameter declaration");
+                    }
+
+                    index = i + 1;
+                }
+            }
+
+            Parameters = tmpList;
         }
     }
 }
