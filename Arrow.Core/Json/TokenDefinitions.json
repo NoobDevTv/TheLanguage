@@ -184,6 +184,14 @@
     "Skip": false
   },
   {
+    "Name": "ClassDeclaration",
+    "Expression": {
+      "Pattern": "\\b(class)\\b",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
     "Name": "Var",
     "Expression": {
       "Pattern": "\\b(var)\\b",
@@ -251,6 +259,14 @@
     "Name": "Divisor",
     "Expression": {
       "Pattern": "[/]",
+      "Options": 0
+    },
+    "Skip": false
+  },
+  {
+    "Name": "LowerThan",
+    "Expression": {
+      "Pattern": "[<]",
       "Options": 0
     },
     "Skip": false
