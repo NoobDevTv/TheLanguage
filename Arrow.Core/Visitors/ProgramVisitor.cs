@@ -12,7 +12,18 @@ namespace Arrow.Core.Visitors
     {
         public void Visit(ClassDeclarationSyntax syntax, ProgramScope scope)
         {
-            base.Visit(syntax, scope);
+            var type = scope.ModuleBuilder.DefineType(syntax.Identifier.Name);
+
+            if (syntax.Body != null)
+            {
+
+                var classVisitor = new ClassVisitor();
+                var classScope = new ClassScope(type);
+                classVisitor.Visit(syntax.Body, classScope);
+            }
+
+            type.CreateType();
+            
         }
     }
 }

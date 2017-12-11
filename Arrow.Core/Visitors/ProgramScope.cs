@@ -9,11 +9,11 @@ namespace Arrow.Core.Visitors
 {
     class ProgramScope : Scope
     {
-        private ModuleBuilder moduleBuilder;
+        public ModuleBuilder ModuleBuilder { get; private set; }
 
         public ProgramScope(ModuleBuilder moduleBuilder)
         {
-            this.moduleBuilder = moduleBuilder;
+            ModuleBuilder = moduleBuilder;
         }
     }
 }
