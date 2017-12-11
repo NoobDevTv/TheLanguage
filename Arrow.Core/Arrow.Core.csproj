@@ -48,6 +48,7 @@
     <Compile Include="Parsing\Definition\IdentifierSyntax.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
     <Compile Include="Parsing\Definition\MethodDeclarationSyntax.cs" />
+    <Compile Include="Parsing\Definition\NamespaceDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\OperationSyntax.cs" />
     <Compile Include="Parsing\Definition\ParameterListSyntax.cs" />
     <Compile Include="Parsing\Definition\ParentSyntax.cs" />

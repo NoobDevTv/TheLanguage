@@ -19,6 +19,7 @@ namespace Arrow.Core.Parsing
         Primitive,
         TypeDeclaration,
         MethodDeclaration,
-        ClassDeclaration
+        ClassDeclaration,
+        NamespaceDeclaration
     }
 }

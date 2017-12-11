@@ -10,6 +10,14 @@ namespace Arrow.Core.Visitors
 {
     class ProgramVisitor : Visitor<ProgramScope>
     {
+        public void Visit(NamespaceDeclarationSyntax syntax, ProgramScope scope)
+        {
+            foreach (var member in syntax.MemberList)
+            {
+                Visit(member, scope);
+            }
+        }
+
         public void Visit(ClassDeclarationSyntax syntax, ProgramScope scope)
         {
             var type = scope.ModuleBuilder.DefineType(syntax.Identifier.Name);
