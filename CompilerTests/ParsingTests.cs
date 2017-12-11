@@ -6,7 +6,7 @@ using Arrow.Core;
 namespace CompilerTests
 {
     [TestClass]
-    public class Program
+    public class ParsingTests
     {
         [TestMethod]
         public void MainParsingTest()
