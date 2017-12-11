@@ -47,7 +47,8 @@ namespace Arrow.Core
             var synatxTree = parser.Parse(tokenResult);
             
             visitor.Visit(synatxTree.Expression, new ProgramScope(moduleBuilder));
-            
+
+            moduleBuilder.CreateGlobalFunctions();
                         
             assemblyBuilder.Save(@"Test.dll");
 
