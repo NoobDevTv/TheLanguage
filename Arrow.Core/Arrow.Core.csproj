@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrowCompiler.cs" />
+    <Compile Include="Parsing\Definition\ClassDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\IdentifierSyntax.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
     <Compile Include="Parsing\Definition\MethodDeclarationSyntax.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Visitors\CodeVisitor.cs" />
     <Compile Include="Visitors\MethodeScope.cs" />
     <Compile Include="Visitors\CodeScope.cs" />
+    <Compile Include="Visitors\ProgramScope.cs" />
+    <Compile Include="Visitors\ProgramVisitor.cs" />
     <Compile Include="Visitors\Scope.cs" />
     <Compile Include="Visitors\Visitor.cs" />
   </ItemGroup>
