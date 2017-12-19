@@ -10,6 +10,8 @@ namespace Arrow.Core.Parsing
 {
     public abstract class Syntax : IScanable
     {
+        public int Position { get; set; }
+        public int Length { get; set; }
 
         public string Name { get; protected set; }
 

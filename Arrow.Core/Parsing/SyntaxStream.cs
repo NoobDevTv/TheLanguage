@@ -11,7 +11,9 @@ namespace Arrow.Core.Parsing
     public class SyntaxStream
     {
         public int Count => baseStream != null ? length : syntaxList.Count;
-        
+        public int GlobalPosition => baseStream == null ? 0 : baseStream.GlobalPosition + index;
+
+
         private List<Syntax> syntaxList;
         private SyntaxStream baseStream;
         private int index;

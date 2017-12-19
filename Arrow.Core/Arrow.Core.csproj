@@ -63,7 +63,6 @@
     <Compile Include="Parsing\Definition\TypeDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\VariableDeclarationSyntax.cs" />
     <Compile Include="Parsing\IScanable.cs" />
-    <Compile Include="Parsing\Parser.cs" />
     <Compile Include="Parsing\RawKind.cs" />
     <Compile Include="Parsing\Scanner.cs" />
     <Compile Include="Parsing\Syntax.cs" />

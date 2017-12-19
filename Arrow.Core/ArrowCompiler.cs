@@ -1,4 +1,5 @@
 ﻿using Arrow.Core.Parsing;
+using Arrow.Core.Parsing.Definition;
 using Arrow.Core.Scanning;
 using Arrow.Core.Visitors;
 using System;
@@ -18,8 +19,8 @@ namespace Arrow.Core
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
+            var scanner = new Scanner();
+            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit<T>();
         }
 
@@ -28,8 +29,8 @@ namespace Arrow.Core
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
+            var scanner = new Scanner();
+            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit();
         }
 
@@ -43,10 +44,10 @@ namespace Arrow.Core
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
+            var scanner = new Scanner();
+            var expression = scanner.Scan<NamespaceDeclarationSyntax>(new SyntaxStream(tokenResult));
             
-            visitor.Visit(synatxTree.Expression, new ProgramScope(moduleBuilder));
+            visitor.Visit(expression, new ProgramScope(moduleBuilder));
 
             moduleBuilder.CreateGlobalFunctions();
                         
