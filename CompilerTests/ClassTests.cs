@@ -19,6 +19,14 @@ namespace CompilerTests
         }
 
         [TestMethod]
+        public void MultiEmptyClassTest()
+        {
+            compiler.GetAssembly("class test0;" +
+                "class test1;" +
+                "class test2;");
+        }
+
+        [TestMethod]
         public void EmptyClassTest()
         {
             compiler.GetAssembly("class test;");

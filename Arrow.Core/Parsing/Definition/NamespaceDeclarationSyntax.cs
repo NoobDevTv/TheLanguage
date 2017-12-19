@@ -20,20 +20,28 @@ namespace Arrow.Core.Parsing.Definition
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
+            var index = 0;
 
-            if (scanner.TryScan(stream, out MethodDeclarationSyntax methodDeclaration))
+            do
             {
-                MemberList.Add(methodDeclaration);
-            }
-            else if (scanner.TryScan(stream, out ClassDeclarationSyntax classDeclaration))
-            {
-                MemberList.Add(classDeclaration);                
-            }
-            else
-            {
-                throw new Exception($"{stream[0]?.Name} is not valid in Namespace");
-            }
+                var substream = stream.Skip(index);
 
+                if (scanner.TryScan(substream, out MethodDeclarationSyntax methodDeclaration))
+                {
+                    MemberList.Add(methodDeclaration);
+                }
+                else if (scanner.TryScan(substream, out ClassDeclarationSyntax classDeclaration))
+                {
+                    MemberList.Add(classDeclaration);
+                }
+                else
+                {
+                    throw new Exception($"{substream[0]?.Name} is not valid in Namespace");
+                }
+
+                index += MemberList.Last().Length;
+
+            } while (index < stream.Count);
 
             return true;
         }

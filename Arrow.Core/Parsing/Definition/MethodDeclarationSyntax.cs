@@ -52,7 +52,8 @@ namespace Arrow.Core.Parsing.Definition
                 return false;
             }
 
-            Length = index + Body.Length;
+            Length = index + Body.Length + DeclarationSyntax.Length;
+
             return true;
         }
     }
