@@ -19,7 +19,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest0()
+        public void MethodTestWithVoidAndEmpty()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test : void
@@ -33,7 +33,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest1()
+        public void MethodTestWithCodeAndVoid()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test : void
@@ -47,7 +47,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest2()
+        public void MethodTestWithParameterAndInt()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test(a : int, b : int) : int
@@ -61,7 +61,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest3()
+        public void MethodTestWithIntAndEmpty()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test() : int
@@ -74,7 +74,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest4()
+        public void MethodTestWithIntAndEmptyWithoutParaList()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test : int
@@ -87,7 +87,7 @@ namespace CompilerTests
         }
 
         [TestMethod]
-        public void MethodTest5()
+        public void MethodTestEmptyWithoutReturnType()
         {
             var assembly = compiler.GetAssembly(@"
                 def Test

@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 namespace CompilerTests
 {
     [TestClass]
-    public class WhiteSpaceTests
+    public class ReturnTest
     {
         ArrowCompiler compiler;
 
-        public WhiteSpaceTests()
+        public ReturnTest()
         {
             compiler = new ArrowCompiler();
         }
 
         [TestMethod]
-        public void WhiteSpaceTest0()
+        public void ReturnWithoutWhiteSpace()
         {
             Assert.AreEqual(compiler.RunFunc<int>(@"ret 1+1;")(), 2);
         }
