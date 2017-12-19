@@ -30,7 +30,10 @@ namespace Arrow.Core.Parsing.Definition
             if (stream[0].Name == "TypeDeclaration")
             {
                 TypeSyntax = scanner.Scan(stream.Skip(1)) as TypeSyntax;
-                return TypeSyntax != null;
+                Position = stream.GlobalPosition;
+                Length = TypeSyntax?.Length + 1 ?? 1;
+
+                return TypeSyntax != null;               
             }
 
             return false;

@@ -25,6 +25,10 @@ namespace Arrow.Core.Parsing.Definition
             if (stream[0].Name == "Return")
             {
                 Expression = scanner.Scan(stream.Skip(1));
+
+                Position = stream.GlobalPosition;
+                Length = 1 + Expression.Length;
+
                 return true;
             }
 

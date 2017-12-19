@@ -25,6 +25,8 @@ namespace Arrow.Core.Parsing.Definition
             {
                 var identifierToken = (TokenSyntax)stream[1];
                 Name = identifierToken.Token.Value;
+                Position = stream.GlobalPosition;
+                Length = 2;
 
                 result = true;
             }
@@ -32,6 +34,7 @@ namespace Arrow.Core.Parsing.Definition
             if ( stream.Count > 2 &&stream[2].Name == "AssignEquals")
             {
                 Expression = scanner.Scan(stream.Skip(3));
+                Length += 1 + Expression.Length;
             }
 
             return result;

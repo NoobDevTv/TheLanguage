@@ -14,7 +14,7 @@ namespace Arrow.Core.Parsing.Definition
 
         public List<ParameterDeclarationSyntax> Parameters { get; private set; }
 
-        public int Length { get; set; }
+        public int Count { get; set; }
 
         public bool AllowEmpty { get; protected set; }
 
@@ -62,6 +62,8 @@ namespace Arrow.Core.Parsing.Definition
                         }
 
 
+                        Count = i + 1;
+                        Position = stream.GlobalPosition;
                         Length = i + 1;
                         return true;
                     }

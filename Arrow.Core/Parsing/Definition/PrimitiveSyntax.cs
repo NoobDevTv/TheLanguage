@@ -74,6 +74,9 @@ namespace Arrow.Core.Parsing.Definition
                         return false;
                 }
 
+                Position = stream.GlobalPosition;
+                Length = 1;
+
                 return true;
             }
 

@@ -41,6 +41,8 @@ namespace Arrow.Core.Parsing.Definition
                         Left = scanner.Scan(stream.Take(i));
                         Right = scanner.Scan(stream.Skip(i + 1));
                         Operation = (OperationKind)Enum.Parse(typeof(OperationKind), operation);
+                        Position = stream.GlobalPosition;
+                        Length = 1 + Left.Length + Right.Length;
                         return true;
                     }
                 }

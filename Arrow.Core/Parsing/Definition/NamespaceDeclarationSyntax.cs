@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arrow.Core.Parsing.Definition
 {
-    [Syntax(SyntaxDefinitionType.NamespaceDeclaration)]
+    //[Syntax(SyntaxDefinitionType.NamespaceDeclaration)]
     class NamespaceDeclarationSyntax : Syntax
     {
         public IdentifierSyntax Identifier { get; private set; }

@@ -27,6 +27,8 @@ namespace Arrow.Core.Parsing.Definition
             {
                 if (tokenSyntax.Name == "Identifier")
                 {
+                    Position = stream.GlobalPosition;
+                    Length = 1;
                     Name =tokenSyntax.Token.Value;
                     return true;
                 }

@@ -28,7 +28,8 @@ namespace Arrow.Core.Parsing.Definition
                 var identifierToken = (TokenSyntax)stream[0];
                 Name = identifierToken.Token.Value;
                 TypeDeclaration = typeDeclarationSyntax;
-
+                Position = stream.GlobalPosition;
+                Length = 1 + typeDeclarationSyntax.Length;
 
                 result = true;
             }

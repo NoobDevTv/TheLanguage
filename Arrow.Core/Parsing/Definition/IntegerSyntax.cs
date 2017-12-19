@@ -29,6 +29,8 @@ namespace Arrow.Core.Parsing.Definition
                 if (tokenSyntax.Name == "Integer")
                 {
                     Value = int.Parse(tokenSyntax.Token.Value);
+                    Position = stream.GlobalPosition;
+                    Length = 1;
                     return true;
                 }
             }

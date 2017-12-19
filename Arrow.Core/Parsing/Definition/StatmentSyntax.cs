@@ -20,8 +20,10 @@ namespace Arrow.Core.Parsing.Definition
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
+            //TODO: need a new Implementation
             var lastPosition = 0;
             var result = false;
+
             for (int i = 0; i < stream.Count; i++)
             {
                 if(stream[i].Name == "CodeLineEnd")
@@ -31,6 +33,9 @@ namespace Arrow.Core.Parsing.Definition
                     result = true;
                 }
             }
+
+            Position = stream.GlobalPosition;
+            Length = stream.Count;
 
             return result;
         }

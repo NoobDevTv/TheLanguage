@@ -28,6 +28,7 @@ namespace Arrow.Core.Parsing.Definition
                 if(scanner.TryScan(stream.Get(1, 1), out IdentifierSyntax identifierSyntax))
                 {
                     Identifier = identifierSyntax;
+                    Position = stream.GlobalPosition;
                 }
                 else
                 {
@@ -42,6 +43,7 @@ namespace Arrow.Core.Parsing.Definition
 
             if (stream[2].Name == "CodeLineEnd")
             {
+                Length = 3;
                 return true;
             }
 

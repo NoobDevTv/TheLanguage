@@ -20,44 +20,40 @@ namespace Arrow.Core.Parsing.Definition
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
-            var result = false;
-
             if (stream.Count < 4) //Because you need a method body
                 return false;
 
-            if (stream[0].Name == "MethodDeclaration" && stream[1].Name == "Identifier")
+            if (!(stream[0].Name == "MethodDeclaration" && stream[1].Name == "Identifier"))
+                return false;
+
+            Identifier = (IdentifierSyntax)scanner.Scan(stream.Get(1, 1));
+            Position = stream.GlobalPosition;
+
+            int index = 2;
+
+            if (scanner.TryScan(stream.Skip(index), out ParameterListSyntax parentSyntax))
             {
-                Identifier = (IdentifierSyntax)scanner.Scan(stream.Get(1, 1));
-
-                int index = 2;
-
-                if (scanner.TryScan(stream.Skip(index), out ParameterListSyntax parentSyntax))
-                {
-                    Signature = parentSyntax;
-                    index += parentSyntax.Length;
-                }
-
-                if (scanner.TryScan(stream.Get(index, 2), out TypeDeclarationSyntax typeDeclarationSyntax))
-                {
-                    DeclarationSyntax = typeDeclarationSyntax;
-                    Body = (ScopeSyntax)scanner.Scan(stream.Skip(index + 2));
-                }
-                else if (scanner.TryScan(stream.Skip(index), out ScopeSyntax scopeSyntax))
-                {
-                    DeclarationSyntax = new TypeDeclarationSyntax(new PrimitiveSyntax());
-                    Body = scopeSyntax;
-                }
-                else
-                {
-                    return false;
-                }
-
-
-                result = true;
+                Signature = parentSyntax;
+                index += parentSyntax.Count;
             }
 
+            if (scanner.TryScan(stream.Get(index, 2), out TypeDeclarationSyntax typeDeclarationSyntax))
+            {
+                DeclarationSyntax = typeDeclarationSyntax;
+                Body = (ScopeSyntax)scanner.Scan(stream.Skip(index + 2));
+            }
+            else if (scanner.TryScan(stream.Skip(index), out ScopeSyntax scopeSyntax))
+            {
+                DeclarationSyntax = new TypeDeclarationSyntax(new PrimitiveSyntax());
+                Body = scopeSyntax;
+            }
+            else
+            {
+                return false;
+            }
 
-            return result;
+            Length = index + Body.Length;
+            return true;
         }
     }
 }
