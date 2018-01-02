@@ -39,8 +39,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Test">
+      <HintPath>..\CompilerTests\bin\Debug\Test.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImplementationExample.cs" />
     <Compile Include="TestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

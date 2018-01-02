@@ -11,8 +11,12 @@ namespace Arrow.Core.Visitors
     {
         public ModuleBuilder ModuleBuilder { get; private set; }
 
+        public Dictionary<string,Type> Types { get; }
+
         public ProgramScope(ModuleBuilder moduleBuilder)
         {
+            Types = new Dictionary<string, Type>();
+
             ModuleBuilder = moduleBuilder;
         }
     }

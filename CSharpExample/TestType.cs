@@ -9,7 +9,7 @@ namespace CSharpExample
     public class TestType
     {
         public int Test(int a, int b)
-        {
+        {             
             return a + b;
         }
 

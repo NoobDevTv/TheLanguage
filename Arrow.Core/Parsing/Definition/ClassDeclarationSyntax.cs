@@ -11,7 +11,7 @@ namespace Arrow.Core.Parsing.Definition
     {
         public IdentifierSyntax Identifier { get; private set; }
         public ScopeSyntax Body { get; set; }
-        public TypeDeclarationSyntax BaseClass { get; set; }
+        public ComplexTypeSyntax BaseClass { get; set; }
 
         public ClassDeclarationSyntax() : base(nameof(ClassDeclarationSyntax))
         {
@@ -40,9 +40,14 @@ namespace Arrow.Core.Parsing.Definition
 
                 if (stream[2].Name == "LowerThan")
                 {
-                    if (scanner.TryScan(stream.Skip(3), out TypeDeclarationSyntax baseType))
+                    if (scanner.TryScan(stream.Skip(3), out ComplexTypeSyntax baseType))
                     {
+                        BaseClass = baseType;
                         index += 1 + baseType.Length;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
 

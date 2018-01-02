@@ -20,7 +20,21 @@ namespace Arrow.Core.Visitors
 
         public void Visit(ClassDeclarationSyntax syntax, ProgramScope scope)
         {
-            var type = scope.ModuleBuilder.DefineType(syntax.Identifier.Name);
+            var type = scope.ModuleBuilder.DefineType(syntax.Identifier.Name,System.Reflection.TypeAttributes.Public);
+
+            if (syntax.BaseClass != null)
+            {
+                var typename = syntax.BaseClass.TypeIdentifier;
+                Type parentType;
+                if (!scope.Types.TryGetValue(typename,out parentType))
+                {
+                    throw new Exception($"{typename} not found");
+                }
+
+                type.SetParent(parentType);
+            }
+
+            scope.Types.Add(syntax.Identifier.Name,type);
 
             if (syntax.Body != null)
             {
