@@ -62,6 +62,16 @@ namespace Arrow.Core.Parsing.Definition
                 Length = index + 1;
                 return true;
             }
+            else if (scanner.TryScan(stream.Skip(index), out ScopeSyntax scope))
+            {
+                Length = index + scope.Length;
+                Body = scope;
+                return true;
+            }
+            else
+            {
+
+            }
 
             return false;
         }

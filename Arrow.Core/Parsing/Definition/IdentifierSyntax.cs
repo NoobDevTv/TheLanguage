@@ -15,7 +15,7 @@ namespace Arrow.Core.Parsing.Definition
         {
         }
 
-        public string Name { get; private set; }
+        //public string Name { get; private set; }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {

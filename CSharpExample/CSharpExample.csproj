@@ -44,7 +44,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImplementationExample.cs" />
     <Compile Include="TestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

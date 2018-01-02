@@ -1,0 +1,12 @@
+class Math 
+{
+	def Add(base : int, value : int) : int
+	{
+		ret base + value;
+	}
+
+	def Remove(base : int, value : int) : int
+	{
+		ret base - value;
+	}
+}

@@ -59,5 +59,41 @@ namespace CompilerTests
 
                   }");
         }
+
+        [TestMethod]
+        public void TwoClassesTest()
+        {
+            compiler.GetAssembly(
+                @"
+                class test {
+
+                  }
+                class test0;
+                ");
+        }
+
+        [TestMethod]
+        public void ClassWithMethodsTest()
+        {
+            compiler.GetAssembly(@"
+            class test {
+            def Hallo(){}
+            def Hallo2(){}
+            }");
+        }
+
+        [TestMethod]
+        public void ClassInherienceWithMethodsTest()
+        {
+            compiler.GetAssembly(@"
+            class test0 {
+                def Tango(){}
+            }
+
+            class test < test0 {
+            def Hallo(){}
+            def Hallo2(){}
+            }");
+        }
     }
 }

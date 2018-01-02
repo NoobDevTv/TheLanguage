@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassTests.cs" />
+    <Compile Include="FileTests.cs" />
     <Compile Include="MethodTests.cs" />
     <Compile Include="NewLineTests.cs" />
     <Compile Include="ParsingTests.cs" />
@@ -57,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="SimpleTest.arrow" />
     <None Include="Test.arrow">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
