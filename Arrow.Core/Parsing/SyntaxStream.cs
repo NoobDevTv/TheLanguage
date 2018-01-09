@@ -39,6 +39,9 @@ namespace Arrow.Core.Parsing
         }
         private SyntaxStream(SyntaxStream syntaxStream, int index, int length)
         {
+            if (index + length > syntaxStream.Count)
+                throw new ArgumentOutOfRangeException(nameof(length));
+
             baseStream = syntaxStream;
             this.index = index;
             this.length = length;

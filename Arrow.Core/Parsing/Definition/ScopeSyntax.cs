@@ -56,7 +56,7 @@ namespace Arrow.Core.Parsing.Definition
                         }
                         else
                         {
-                           Members.AddRange(SearchMember(1, i, stream, scanner));
+                            Members.AddRange(SearchMember(1, i, stream, scanner));
                         }
 
 
@@ -75,12 +75,13 @@ namespace Arrow.Core.Parsing.Definition
         {
             int index = start;
 
-            while(scanner.TryScan(stream.Skip(index),out Syntax member))
+            //TODO:Skip to Get
+            while (index < end && scanner.TryScan(stream.Get(index, end - index), out Syntax member))
             {
                 index += member.Length;
                 yield return member;
 
-                if(index > end)
+                if (index > end)
                 {
                     break;
                 }
