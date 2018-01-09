@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassTests.cs" />
+    <Compile Include="FieldTests.cs" />
     <Compile Include="FileTests.cs" />
     <Compile Include="MethodTests.cs" />
     <Compile Include="NewLineTests.cs" />

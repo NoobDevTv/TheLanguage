@@ -18,8 +18,10 @@ namespace Arrow.Core.Parsing
         Scope,
         Primitive,
         TypeDeclaration,
+        FieldDeclaration,
         MethodDeclaration,
         ClassDeclaration,
-        NamespaceDeclaration
+        NamespaceDeclaration,
+        
     }
 }

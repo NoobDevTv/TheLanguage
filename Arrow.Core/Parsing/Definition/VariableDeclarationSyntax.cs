@@ -11,15 +11,24 @@ namespace Arrow.Core.Parsing.Definition
     [Syntax(SyntaxDefinitionType.Variable)]
     public class VariableDeclarationSyntax : Syntax
     {
+        public Syntax Expression { get; protected set; }
+
+        public TypeDeclarationSyntax TypeDeclarationSyntax { get; set; }
+
         public VariableDeclarationSyntax() : base(nameof(VariableDeclarationSyntax))
         {
         }
-        
-        public Syntax Expression { get; private set; }
+        protected VariableDeclarationSyntax(string name) : base(name)
+        {
 
+        }
+        
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
             var result = false;
+
+            if (stream.Count < 2)
+                return false;
 
             if (stream[0].Name == "Var" && stream[1].Name == "Identifier")
             {
@@ -31,9 +40,15 @@ namespace Arrow.Core.Parsing.Definition
                 result = true;
             }
 
-            if ( stream.Count > 2 &&stream[2].Name == "AssignEquals")
+            if(stream.Count > Length && scanner.TryScan(stream.Skip(Length),out TypeDeclarationSyntax type))
             {
-                Expression = scanner.Scan(stream.Skip(3));
+                TypeDeclarationSyntax = type;
+                Length += type.Length;
+            }
+
+            if ( stream.Count > Length &&stream[Length].Name == "AssignEquals")
+            {
+                Expression = scanner.Scan(stream.Skip(Length + 1));
                 Length += 1 + Expression.Length;
             }
 

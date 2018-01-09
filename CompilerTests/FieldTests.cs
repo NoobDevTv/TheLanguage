@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +9,22 @@ using System.Threading.Tasks;
 namespace CompilerTests
 {
     [TestClass]
-    public class FileTests
+    public class FieldTests
     {
         private ArrowCompiler compiler;
 
-        public FileTests()
+        public FieldTests()
         {
             compiler = new ArrowCompiler();
         }
 
         [TestMethod]
-        public void FileCompiling()
+        public void SimpleFieldTest()
         {
-            compiler.GetAssembly(File.ReadAllText(@"D:\Projekte\Visual 2017\TheLanguage\CompilerTests\SimpleTest.arrow"));
+            compiler.GetAssembly(
+               @"class test {
+                    var global : int;
+                  }");
         }
     }
 }

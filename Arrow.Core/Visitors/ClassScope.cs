@@ -11,8 +11,11 @@ namespace Arrow.Core.Visitors
     {
         public readonly TypeBuilder TypeBuilder;
 
+        public Dictionary<string,FieldBuilder> Fields;
+
         public ClassScope(TypeBuilder typeBuilder)
         {
+            Fields = new Dictionary<string, FieldBuilder>();
             TypeBuilder = typeBuilder;
         }
     }

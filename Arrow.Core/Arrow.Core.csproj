@@ -46,6 +46,7 @@
     <Compile Include="ArrowCompiler.cs" />
     <Compile Include="Parsing\Definition\ClassDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\ComplexTypeSyntax.cs" />
+    <Compile Include="Parsing\Definition\FieldDeclarationSyntax.cs" />
     <Compile Include="Parsing\Definition\IdentifierSyntax.cs" />
     <Compile Include="Parsing\Definition\IntegerSyntax.cs" />
     <Compile Include="Parsing\Definition\MethodDeclarationSyntax.cs" />
