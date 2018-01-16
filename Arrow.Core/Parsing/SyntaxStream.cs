@@ -11,7 +11,9 @@ namespace Arrow.Core.Parsing
     public class SyntaxStream
     {
         public int Count => baseStream != null ? length : syntaxList.Count;
-        
+        public int GlobalPosition => baseStream == null ? 0 : baseStream.GlobalPosition + index;
+
+
         private List<Syntax> syntaxList;
         private SyntaxStream baseStream;
         private int index;
@@ -37,6 +39,9 @@ namespace Arrow.Core.Parsing
         }
         private SyntaxStream(SyntaxStream syntaxStream, int index, int length)
         {
+            if (index + length > syntaxStream.Count)
+                throw new ArgumentOutOfRangeException(nameof(length));
+
             baseStream = syntaxStream;
             this.index = index;
             this.length = length;

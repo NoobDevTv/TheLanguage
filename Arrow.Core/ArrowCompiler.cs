@@ -1,4 +1,5 @@
 ﻿using Arrow.Core.Parsing;
+using Arrow.Core.Parsing.Definition;
 using Arrow.Core.Scanning;
 using Arrow.Core.Visitors;
 using System;
@@ -18,8 +19,8 @@ namespace Arrow.Core
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
+            var scanner = new Scanner();
+            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit<T>();
         }
 
@@ -28,30 +29,28 @@ namespace Arrow.Core
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
+            var scanner = new Scanner();
+            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit();
         }
 
         public Assembly GetAssembly(string input)
         {
             AssemblyBuilder assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("Test"), AssemblyBuilderAccess.RunAndSave);
-            var moduleBuilder = assemblyBuilder.DefineDynamicModule("Test.TestModule", "Test.dll");            
-            var typeBuilder = moduleBuilder.DefineType("TestType", TypeAttributes.Public);
+            var moduleBuilder = assemblyBuilder.DefineDynamicModule("Test.TestModule", "Test.dll");
 
-            ClassScope scope = new ClassScope(typeBuilder);
-            ClassVisitor visitor = new ClassVisitor();
-
+            var visitor = new ProgramVisitor();
+           
             var tokenDefinitions = TokenDefinitionCollection.LoadFromIntern();
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
-            var parser = new Parser();
-            var synatxTree = parser.Parse(tokenResult);
-
-            visitor.Visit(synatxTree.Expression, scope);
-
-            typeBuilder.CreateType();
+            var scanner = new Scanner();
+            var expression = scanner.Scan<NamespaceDeclarationSyntax>(new SyntaxStream(tokenResult));
             
+            visitor.Visit(expression, new ProgramScope(moduleBuilder));
+
+            moduleBuilder.CreateGlobalFunctions();
+                        
             assemblyBuilder.Save(@"Test.dll");
 
             return assemblyBuilder;

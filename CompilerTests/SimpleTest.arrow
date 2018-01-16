@@ -1,0 +1,14 @@
+class Math 
+{
+	var det : int;
+
+	def Add(base : int, value : int) : int
+	{
+		ret base + value;
+	}
+
+	def Remove(base : int, value : int) : int
+	{
+		ret base - value;
+	}
+}

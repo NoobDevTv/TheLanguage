@@ -9,6 +9,24 @@ namespace Arrow.Core.Visitors
 {
     class ClassVisitor : Visitor<ClassScope>
     {
+        public void Visit(ScopeSyntax syntax, ClassScope scope)
+        {
+            if (syntax.Members != null)
+            {
+                foreach (var member in syntax.Members)
+                {
+                    Visit(member, scope);
+                }
+                
+            }
+        }
+
+        public void Visit(FieldDeclarationSyntax syntax, ClassScope scope)
+        {
+            var field = scope.TypeBuilder.DefineField(syntax.Name, syntax.TypeDeclarationSyntax.TypeSyntax.Type, System.Reflection.FieldAttributes.Private);
+            scope.Fields.Add(syntax.Name, field);
+        }
+
         public void Visit(MethodDeclarationSyntax syntax, ClassScope scope)
         {
             var parameterTypes = syntax.Signature?.Parameters.Select(p => p.TypeDeclaration.TypeSyntax.Type).ToArray();

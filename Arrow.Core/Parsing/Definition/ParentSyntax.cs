@@ -64,7 +64,8 @@ namespace Arrow.Core.Parsing.Definition
                             Member = scanner.Scan(stream.Get(1, i - 1));
                         }
 
-                        
+                        Position = stream.GlobalPosition;
+                        Length = i + 1;
 
                         return true;
                     }

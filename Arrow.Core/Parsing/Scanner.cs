@@ -49,6 +49,15 @@ namespace Arrow.Core.Parsing
             throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
         }
 
+        internal Syntax Scan<T>(SyntaxStream syntaxStream)
+            where T : Syntax,new()
+        {
+            if (TryScan<T>(syntaxStream, out var syntax))
+                return syntax;
+
+            throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
+        }
+
 
         internal void Collect()
         {

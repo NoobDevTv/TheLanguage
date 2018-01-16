@@ -15,7 +15,7 @@ namespace Arrow.Core.Parsing.Definition
         {
         }
 
-        public string Name { get; private set; }
+        //public string Name { get; private set; }
 
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
@@ -27,6 +27,8 @@ namespace Arrow.Core.Parsing.Definition
             {
                 if (tokenSyntax.Name == "Identifier")
                 {
+                    Position = stream.GlobalPosition;
+                    Length = 1;
                     Name =tokenSyntax.Token.Value;
                     return true;
                 }

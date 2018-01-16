@@ -127,13 +127,17 @@ namespace Arrow.Core.Visitors
 
         public void Visit(ScopeSyntax scopeSyntax, CodeScope scope)
         {
-            if (scopeSyntax.Member == null)
+            if (scopeSyntax.Members == null || scopeSyntax.Members.Count == 0)
             {
                 scope.Generator.Emit(OpCodes.Nop);
                 return;
             }
 
-            Visit(scopeSyntax.Member, scope);
+            foreach (var member in scopeSyntax.Members)
+            {
+                Visit(member, scope);
+            }
+            
         }
     }
 }
