@@ -20,7 +20,7 @@ namespace Arrow.Core
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
             var scanner = new Scanner();
-            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
+            var synatxTree = new Tree(scanner.Scan<Statement>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit<T>();
         }
 
@@ -30,7 +30,7 @@ namespace Arrow.Core
             var tokenizer = new Tokenizer(tokenDefinitions);
             var tokenResult = tokenizer.Parse(input);
             var scanner = new Scanner();
-            var synatxTree = new SyntaxTree(scanner.Scan<StatmentSyntax>(new SyntaxStream(tokenResult)));
+            var synatxTree = new Tree(scanner.Scan<Statement>(new SyntaxStream(tokenResult)));
             return synatxTree.Visit();
         }
 

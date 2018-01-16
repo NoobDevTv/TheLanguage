@@ -52,11 +52,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Arrow.Core\Arrow.Core.csproj">
-      <Project>{a5970600-f841-4e8f-acbb-a71068584848}</Project>
-      <Name>Arrow.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
