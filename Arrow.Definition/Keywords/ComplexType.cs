@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basekeywords;
+﻿using Arrow.Core;
+using Arrow.Core.Basekeywords;
 
 namespace Arrow.Definition.Keywords
 {
@@ -10,7 +11,7 @@ namespace Arrow.Definition.Keywords
             {
                 if(tokenSyntax.Name == "Identifier")
                 {
-                    TypeIdentifier = tokenSyntax.Token.Value;
+                    Value = tokenSyntax.Token.Value;
                     Position = stream.GlobalPosition;
                     Length = 1;
                     return true;

@@ -12,4 +12,8 @@
     <EmbeddedResource Include="Json\TokenDefinitions.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Arrow.Core\Arrow.Core.csproj" />
+  </ItemGroup>
+
 </Project>

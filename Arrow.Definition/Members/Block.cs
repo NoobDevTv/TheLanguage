@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basemembers;
+﻿using Arrow.Core;
+using Arrow.Core.Basemembers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,27 @@ namespace Arrow.Definition.Members
 {
     class Block : BlockBase
     {
+        public const string OPEN_TOKEN = "ScopeBegin";
+        public const string CLOSE_TOKEN = "ScopeEnd";
+
+        public Block()
+        {
+            
+        }
       
         public override bool TryParse(SyntaxStream stream, Scanner scanner)
         {
-            if (stream[0].Name != nameOpen)
+            if (stream[0].Name != OPEN_TOKEN)
                 return false;
 
             int openCount = 1;
 
             for (int i = 1; i < stream.Count; i++)
             {
-                if (stream[i].Name == nameOpen)
+                if (stream[i].Name == OPEN_TOKEN)
                     openCount++;
 
-                else if (stream[i].Name == nameClose)
+                else if (stream[i].Name == CLOSE_TOKEN)
                 {
                     openCount--;
 

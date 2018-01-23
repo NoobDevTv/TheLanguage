@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Arrow.Core.Basekeywords
 {
-    public abstract class TypeKeyword : Keyword<Type>
+    public abstract class TypeKeyword : Keyword<string>
     {
     }
 }

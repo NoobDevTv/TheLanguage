@@ -1,5 +1,4 @@
 ﻿using Arrow.Core.Scanning;
-using Arrow.Core.Visitors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,7 @@ namespace Arrow.Core
         public Token Token { get; }
 
         public TokenSyntax(Token token)
-            : base(nameof(TokenSyntax))
+            : base()
         {
             Token = token;
             Name = token.Name;

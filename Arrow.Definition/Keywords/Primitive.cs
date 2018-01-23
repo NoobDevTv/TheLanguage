@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basekeywords;
+﻿using Arrow.Core;
+using Arrow.Core.Basekeywords;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,52 +21,52 @@ namespace Arrow.Definition.Keywords
                 switch (tokenSyntax.Name)
                 {
                     case "Void":
-                        Type = null;
+                        Value = "void";
                         break;
                     case "Int":
-                        Type = typeof(Int32);
+                        Value = "int32_t";
                         break;
                     case "Short":
-                        Type = typeof(Int16);
+                        Value = "int16_t";
                         break;
                     case "Long":
-                        Type = typeof(Int64);
+                        Value = "int64_t";
                         break;
                     case "Float":
-                        Type = typeof(Single);
+                        Value = "float";
                         break;
                     case "Decimal":
-                        Type = typeof(Decimal);
+                        Value = "decimal";
                         break;
                     case "Double":
-                        Type = typeof(Double);
+                        Value = "double";
                         break;
                     case "String":
-                        Type = typeof(String);
+                        Value = "string";
                         break;
                     case "Char":
-                        Type = typeof(Char);
+                        Value = "char";
                         break;
                     case "Bool":
-                        Type = typeof(Boolean);
+                        Value = "boolean";
                         break;
                     case "Object":
-                        Type = typeof(Object);
+                        Value = "object";
                         break;
                     case "UShort":
-                        Type = typeof(UInt16);
+                        Value = "uint16_t";
                         break;
                     case "UInt":
-                        Type = typeof(UInt32);
+                        Value = "uint32_t";
                         break;
                     case "ULong":
-                        Type = typeof(UInt64);
+                        Value = "uint64_t";
                         break;
                     case "Byte":
-                        Type = typeof(Byte);
+                        Value = "int8_t";
                         break;
                     case "SByte":
-                        Type = typeof(SByte);
+                        Value = "uint8_t";
                         break;
                     default:
                         return false;

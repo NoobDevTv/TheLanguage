@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Arrow.Core.Parsing
+namespace Arrow.Core
 {
     public abstract class Tree
     {
