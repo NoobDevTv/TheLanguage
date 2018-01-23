@@ -11,7 +11,7 @@ namespace Arrow.Definition.Members
 {
     class ClassDeclaration : ClassDeclarationBase
     {
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             if (stream.Count < 3)
                 return false;

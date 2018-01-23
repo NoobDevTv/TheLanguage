@@ -5,7 +5,7 @@ namespace Arrow.Definition.Keywords
 {
     public class ComplexType : TypeKeyword
     {
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             if(stream[0] is TokenSyntax tokenSyntax)
             {

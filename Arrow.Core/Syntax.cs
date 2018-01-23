@@ -21,6 +21,6 @@ namespace Arrow.Core
 
         public override string ToString() => Name;
 
-        public abstract bool TryParse(SyntaxStream stream, Scanner scanner);
+        public abstract bool TryParse(TokenStream stream, Scanner scanner);
     }
 }

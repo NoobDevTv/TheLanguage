@@ -18,7 +18,7 @@ namespace Arrow.Definition.Members
             
         }
       
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             if (stream[0].Name != OPEN_TOKEN)
                 return false;
@@ -61,21 +61,23 @@ namespace Arrow.Definition.Members
             return false;
         }
 
-        private IEnumerable<Syntax> SearchMember(int start, int end, SyntaxStream stream, Scanner scanner)
+        private IEnumerable<Member> SearchMember(int start, int end, TokenStream stream, Scanner scanner)
         {
             int index = start;
 
-            //TODO:Skip to Get
-            while (index < end && scanner.TryScan(stream.Get(index, end - index), out Syntax member))
-            {
-                index += member.Length;
-                yield return member;
+            ////TODO:Skip to Get
+            //while (index < end && scanner.TryScan<>(stream.Get(index, end - index), out Member member))
+            //{
+            //    index += member.Length;
+            //    yield return member;
 
-                if (index > end)
-                {
-                    break;
-                }
-            }
+            //    if (index > end)
+            //    {
+            //        break;
+            //    }
+            //}
+
+            throw new NotImplementedException("Not yet implemented RTFM");
         }
     }
 }

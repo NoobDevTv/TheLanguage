@@ -17,7 +17,7 @@ namespace Arrow.Core
         }
 
 
-        internal bool TryScan(SyntaxStream syntaxStream, out Syntax scanResult)
+        public bool TryScan(TokenStream syntaxStream, out Syntax scanResult)
         {
             scanResult = null;
 
@@ -30,29 +30,11 @@ namespace Arrow.Core
 
             return false;
         }
-        internal bool TryScan<T>(SyntaxStream syntaxStream, out T scanResult)
+        public bool TryScan<T>(TokenStream syntaxStream, out T scanResult)
             where T : Syntax, new()
         {
             scanResult = new T();
             return scanResult.TryParse(syntaxStream, this);
         }
-
-        internal Syntax Scan(SyntaxStream syntaxStream)
-        {
-            if (TryScan(syntaxStream, out var syntax))
-                return syntax;
-
-            throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
-        }
-
-        internal Syntax Scan<T>(SyntaxStream syntaxStream)
-            where T : Syntax, new()
-        {
-            if (TryScan<T>(syntaxStream, out var syntax))
-                return syntax;
-
-            throw new Exception($"Syntax {syntaxStream.SyntaxList.FirstOrDefault()} not found!");
-        }
-
     }
 }

@@ -12,7 +12,7 @@ namespace Arrow.Definition.Keywords
     public class Integer : IntegerKeyword
     {
 
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             if (stream.Count != 1)
                 return false;

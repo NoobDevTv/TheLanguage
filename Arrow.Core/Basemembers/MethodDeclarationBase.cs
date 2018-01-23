@@ -7,9 +7,9 @@ namespace Arrow.Core.Basemembers
 {
     public abstract class MethodDeclarationBase : Member
     {
-        public IdentifierKeyword Identifier { get; private set; }
-        public TypeKeyword DeclarationSyntax { get; private set; }
-        public BlockBase Body { get; private set; }
-        public MemberListBase Signature { get; private set; }
+        public IdentifierKeyword Identifier { get; protected set; }
+        public TypeKeyword DeclarationSyntax { get; protected set; }
+        public BlockBase Body { get; protected set; }
+        public MemberListBase Signature { get; protected set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arrow.Core.Scanning;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,8 @@ namespace Arrow.Core.Basemembers
 {
     public abstract class BlockBase : Member
     {
-        public Keyword Open { get; private set; }
-        public Keyword Close { get; private set; }
+        public Token Open { get; protected set; }
+        public Token Close { get; protected set; }
 
         public int Count { get; set; }
         public bool AllowEmpty { get; protected set; }
