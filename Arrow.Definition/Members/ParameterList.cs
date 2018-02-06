@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basemembers;
+﻿using Arrow.Core;
+using Arrow.Core.Basemembers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,19 @@ namespace Arrow.Definition.Members
 {
     public class ParameterList : MemberListBase
     {
-        
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        private readonly string nameOpen;
+        private readonly string nameClose;
+
+        public ParameterList()
         {
+            nameOpen = "BracketOpen";
+            nameClose = "BracketClose";
+        }
+
+        public override bool TryParse(TokenStream stream, Scanner scanner)
+        {
+            if (stream.Count < 2)
+                return false;
 
             if (stream[0].Name != nameOpen)
                 return false;
@@ -21,31 +32,20 @@ namespace Arrow.Definition.Members
             for (int i = 1; i < stream.Count; i++)
             {
                 if (stream[i].Name == nameOpen)
+                {
                     openCount++;
-
+                }
                 else if (stream[i].Name == nameClose)
                 {
                     openCount--;
 
                     if (openCount == 0)
                     {
-                        Open = stream[0];
-                        Close = stream[i];
+                        Members.AddRange(SearchParameter(1, i, stream, scanner));
 
-                        if (i - 1 == 0)
-                        {
-                            if (!AllowEmpty)
-                                throw new Exception("Empty Member");
-                        }
-                        else
-                        {
-                            SearchParameter(1, i, stream, scanner);
-                        }
-
-
-                        Count = i + 1;
                         Position = stream.GlobalPosition;
                         Length = i + 1;
+
                         return true;
                     }
                 }
@@ -54,10 +54,13 @@ namespace Arrow.Definition.Members
             return false;
         }
 
-        private void SearchParameter(int start, int end, SyntaxStream stream, Scanner scanner)
+        private List<ParameterDeclaration> SearchParameter(int start, int end, TokenStream stream, Scanner scanner)
         {
             int index = start;
             var tmpList = new List<ParameterDeclaration>();
+
+            if (end <= 1)
+                return tmpList;
 
             for (int i = start; i <= end; i++)
             {
@@ -77,7 +80,7 @@ namespace Arrow.Definition.Members
                 }
             }
 
-            Parameters = tmpList;
+            return tmpList;
         }
     }
 }

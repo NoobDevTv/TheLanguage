@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basestatements;
+﻿using Arrow.Core;
+using Arrow.Core.Basestatements;
 using Arrow.Core.Scanning;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,7 @@ namespace Arrow.Definition.Statements
 {
     public class Operation : OperationStatement
     {
-        
-
-        public Operation() : base(nameof(Statements.Operation))
-        {
-        }
-
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             if (stream.Count < 3)
                 return false;
@@ -35,6 +30,7 @@ namespace Arrow.Definition.Statements
                     else if (stream[i].Name == operation &&
                              openBracket == 0)
                     {
+                                                
                         Left = scanner.Scan(stream.Take(i));
                         Right = scanner.Scan(stream.Skip(i + 1));
                         Operation = (OperationKind)Enum.Parse(typeof(OperationKind), operation);

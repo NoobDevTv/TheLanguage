@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Arrow.Core.Basekeywords;
 using Arrow.Core;
+using Arrow.Core.Scanning;
 
 namespace Arrow.Definition.Keywords
 {
     public class Identifier : IdentifierKeyword
-    {        
+    {
 
         public override bool TryParse(TokenStream stream, Scanner scanner)
         {
@@ -18,13 +19,13 @@ namespace Arrow.Definition.Keywords
             if (stream.Count != 1)
                 return false;
 
-            if (stream[0] is TokenSyntax tokenSyntax)
+            if (stream[0] is Token token)
             {
-                if (tokenSyntax.Name == "Identifier")
+                if (token.Name == "Identifier")
                 {
                     Position = stream.GlobalPosition;
                     Length = 1;
-                    Name =tokenSyntax.Token.Value;
+                    Name = token.Value;
                     return true;
                 }
             }

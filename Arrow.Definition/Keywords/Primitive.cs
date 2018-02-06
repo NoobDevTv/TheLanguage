@@ -1,5 +1,6 @@
 ﻿using Arrow.Core;
 using Arrow.Core.Basekeywords;
+using Arrow.Core.Scanning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Arrow.Definition.Keywords
             if (stream.Count != 1)
                 return false;
 
-            if (stream[0] is TokenSyntax tokenSyntax)
+            if (stream[0] is Token token)
             {
-                switch (tokenSyntax.Name)
+                switch (token.Name)
                 {
                     case "Void":
                         Value = "void";

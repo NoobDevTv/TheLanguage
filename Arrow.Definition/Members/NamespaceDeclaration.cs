@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basemembers;
+﻿using Arrow.Core;
+using Arrow.Core.Basemembers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Arrow.Definition.Members
 {
     class NamespaceDeclaration : NamespaceDeclarationBase
     {
-
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
+        
+        public override bool TryParse(TokenStream stream, Scanner scanner)
         {
             var index = 0;
 

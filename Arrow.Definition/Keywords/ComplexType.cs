@@ -1,5 +1,6 @@
 ﻿using Arrow.Core;
 using Arrow.Core.Basekeywords;
+using Arrow.Core.Scanning;
 
 namespace Arrow.Definition.Keywords
 {
@@ -7,11 +8,11 @@ namespace Arrow.Definition.Keywords
     {
         public override bool TryParse(TokenStream stream, Scanner scanner)
         {
-            if(stream[0] is TokenSyntax tokenSyntax)
+            if(stream[0] is Token token)
             {
-                if(tokenSyntax.Name == "Identifier")
+                if(token.Name == "Identifier")
                 {
-                    Value = tokenSyntax.Token.Value;
+                    Value = token.Value;
                     Position = stream.GlobalPosition;
                     Length = 1;
                     return true;

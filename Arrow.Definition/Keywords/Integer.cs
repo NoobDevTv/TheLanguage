@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Reflection.Emit;
 using Arrow.Core.Basekeywords;
 using Arrow.Core;
+using Arrow.Core.Scanning;
 
 namespace Arrow.Definition.Keywords
 {
@@ -17,11 +18,11 @@ namespace Arrow.Definition.Keywords
             if (stream.Count != 1)
                 return false;
 
-            if (stream[0] is TokenSyntax tokenSyntax)
+            if (stream[0] is Token token)
             {
-                if (tokenSyntax.Name == "Integer")
+                if (token.Name == "Integer")
                 {
-                    Value = int.Parse(tokenSyntax.Token.Value);
+                    Value = int.Parse(token.Value);
                     Position = stream.GlobalPosition;
                     Length = 1;
                     return true;

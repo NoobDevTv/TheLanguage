@@ -1,4 +1,5 @@
-﻿using Arrow.Core.Basestatements;
+﻿using Arrow.Core;
+using Arrow.Core.Basestatements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,17 @@ namespace Arrow.Definition.Statements
 {
     public class Parent : ParentStatement
     {
-        public override bool TryParse(SyntaxStream stream, Scanner scanner)
-        {
+        private readonly string nameOpen;
+        private readonly string nameClose;
 
+        public Parent()
+        {
+            nameOpen = "BracketOpen";
+            nameClose = "BracketClose";
+        }
+
+        public override bool TryParse(TokenStream stream, Scanner scanner)
+        {
             if (stream[0].Name != nameOpen ||
                 stream[stream.Count - 1].Name != nameClose)
                 return false;
@@ -35,16 +44,9 @@ namespace Arrow.Definition.Statements
                     if (openCount == 0 &&
                         i == stream.Count - 1)
                     {
-                        Open = stream[0];
-                        Close = stream[i];
-
-                        if (i -1 == 0)
+                        if (i -1 != 0)
                         {
-                            if (!AllowEmpty)
-                                throw new Exception("Empty Member");
-                        }
-                        else
-                        {
+                            //TODO: TryScan with IExpression
                             Member = scanner.Scan(stream.Get(1, i - 1));
                         }
 
